@@ -1,0 +1,236 @@
+.sidebar {
+  width: 120%;
+  height: 100%;
+  background-color: #ffffff;
+  border-left: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.sidebar-section {
+  padding: 16px 0;
+}
+
+.sidebar-section:first-child {
+  padding-top: 0;
+}
+
+.sidebar-footer {
+  border: none;
+}
+
+.section-header {
+  padding: 0 25px;
+  font-size: 13px;
+  color: #727272;
+  letter-spacing: 0.5px;
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 16px;
+  color: #888888;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 8px;
+  border-radius: 8px;
+}
+
+.menu-item:hover {
+  background-color: #DFF0E8;
+  color: #1E7A60;
+}
+
+.menu-item.active {
+  background-color: #DFF0E8;
+  color: #1E7A60;
+  font-weight: 500;
+}
+
+.menu-label {
+  font-size: 14px;
+  flex: 1;
+  color: inherit;
+}
+
+.menu-item-collapsible {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 16px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  margin: 8px 6px;
+  border-radius: 8px;
+}
+
+.menu-item-header:hover {
+  background-color: #f8f9fa;
+  color: #666;
+}
+
+.menu-arrow {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: inherit;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.menu-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 4px 0;
+  margin-left: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.submenu-item {
+  padding: 8px 10px;
+  font-size: 13px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  margin: 3px 4px 0 30px;
+  border-radius: 8px;
+}
+
+.submenu-item:hover {
+  background-color: #e8e8e8;
+  color: #666;
+}
+
+.submenu-item.active {
+  font-weight: 500;
+  background-color: #DFF0E8;
+}
+
+/* Create Request Card Styles */
+.create-request-card {
+ margin: 40px 16px 20px !important;
+  padding: 36px 20px 24px;
+  background: linear-gradient(135deg, #1E7A60 0%, #166B52 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(30, 122, 96, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: visible !important; 
+}
+
+/* .create-request-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+} */
+
+.card-icon {
+ position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  background: #F4C542;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+
+.card-icon svg {
+  filter: drop-shadow(0 2px 8px rgba(244, 197, 66, 0.3));
+   width: 24px;
+  height: 24px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.card-description {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px 0;
+  line-height: 1.5;
+  max-width: 180px;
+}
+
+.card-button {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  color: #1E7A60;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-button:hover {
+  background-color: #F4C542;
+  color: #1E7A60;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

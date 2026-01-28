@@ -1,0 +1,269 @@
+.dashboard-container {
+  display: flex;
+  gap: 24px;
+  padding: 0 24px;
+  padding-left: 0;
+  padding-right: 10px;
+  margin-top: 70px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 70px);
+  overflow-x: hidden !important;
+  flex: 1;
+    width: 100% !important;
+}
+
+.main-content,
+app-business-requests-page,
+app-business-request-details-page,
+app-create-request {
+  width: 100%;
+  flex: 1;
+}
+
+.main-content {
+  flex: 1;
+  border-radius: 8px;
+  padding: 24px;
+  margin-left: 15px;
+}
+
+.dashboard-header {
+  margin-bottom: 24px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.dashboard-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.last-refresh {
+  font-size: 12px;
+  color: #999;
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb-icon {
+  color: #ccc;
+  font-weight: bold;
+}
+
+.breadcrumb-active {
+  color: #17a2b8;
+  font-weight: 500;
+}
+
+.create-request-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.create-request-image {
+  height: auto;
+  width: 100%;
+  border-radius: 20px;
+  margin: 0px 20px 20px 20px;
+  display: block;
+}
+
+.create-request-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.create-request-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.create-request-text {
+  flex: 1;
+  color: white;
+}
+
+.create-request-title {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+.create-request-title strong {
+  font-weight: 600;
+  display: block;
+}
+
+.create-request-description {
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+.create-request-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: white;
+  color: #1E7A60;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.create-request-btn:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.create-request-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.requests-title{
+    margin-bottom: 10px;
+}
+
+.search-filter-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-box {
+  width: 40%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px 10px 16px;
+  border: 1px solid #B0B0B0;
+  border-radius: 10px;
+  font-size: 13px;
+  color: #333;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #17a2b8;
+  box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  width: 18px;
+  height: 18px;
+  color: #999;
+  pointer-events: none;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: white;
+  border: 1px solid #B0B0B0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.filter-button:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.filter-button svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+}
+
+.table-section{
+    background: white;
+    padding: 16px;
+    border-radius: 20px;
+}
+/* 
+@media (max-width: 1200px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .main-content {
+    padding: 12px;
+  }
+
+  .dashboard-title {
+    font-size: 24px;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-filter-section {
+    flex-direction: column;
+  }
+
+  .filter-button {
+    width: 100%;
+    justify-content: center;
+  }
+} */

@@ -1,0 +1,184 @@
+<div class="create-request-page">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-left">
+      <h1 class="page-title">Create New Request</h1>
+      <div class="breadcrumb">
+        <span class="breadcrumb-item">Dashboard</span>
+        <span class="breadcrumb-separator">▸</span>
+        <span class="breadcrumb-item active">New Request</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="last-refresh">Last Refresh: {{ currentTime }}</span>
+    </div>
+  </div>
+
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <h2 class="welcome-title">Welcome</h2>
+    <p class="welcome-subtitle">
+      Provide complete and accurate information to avoid validation issues
+    </p>
+  </div>
+
+  <!-- Form Section -->
+  <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" class="request-form">
+    <!-- Dashboard Name and Business Domain Row -->
+    <div class="form-row">
+      <div class="form-group half-width">
+        <label class="form-label"> Dashboard Name<span class="required">*</span> </label>
+        <input
+          type="text"
+          class="form-input"
+          placeholder="Write here..."
+          formControlName="dashboardName"
+        />
+      </div>
+
+      <div class="form-group half-width">
+        <label class="form-label"> Business Domain / Area<span class="required">*</span> </label>
+        <div class="select-wrapper">
+          <select class="form-select" formControlName="businessDomain">
+            <option value="" disabled selected>Write here...</option>
+            <option *ngFor="let domain of businessDomains" [value]="domain">
+              {{ domain }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Type Field -->
+    <div class="form-group full-width">
+      <label class="form-label"> Type<span class="required">*</span> </label>
+      <input type="text" class="form-input" placeholder="Write here..." formControlName="type" />
+    </div>
+
+    <!-- Dashboard Description -->
+    <div class="form-group full-width">
+      <label class="form-label"> Dashboard Description<span class="required">*</span> </label>
+      <textarea
+        class="form-textarea"
+        placeholder="Write a long text here..."
+        formControlName="dashboardDescription"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <!-- Notes For QC -->
+    <div class="form-group full-width">
+      <label class="form-label">Notes For QC</label>
+      <textarea
+        class="form-textarea"
+        placeholder="Write a long text here..."
+        formControlName="notesForQC"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <!-- Priority -->
+    <div class="form-group full-width">
+      <label class="form-label">Priority</label>
+      <div class="priority-buttons">
+        <button
+          type="button"
+          class="priority-btn"
+          [class.active]="selectedPriority === 'high'"
+          (click)="selectPriority('high')"
+        >
+          <svg
+            width="7"
+            height="10"
+            viewBox="0 0 7 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6.50025 6C6.58545 5.99995 6.66922 5.97814 6.74362 5.93663C6.81802 5.89512 6.88058 5.83528 6.92536 5.7628C6.97014 5.69032 6.99566 5.60761 6.99949 5.5225C7.00333 5.43739 6.98535 5.35271 6.94726 5.2765L6.05923 3.5L6.94726 1.7235C6.98535 1.64729 7.00333 1.56261 6.99949 1.4775C6.99566 1.39239 6.97014 1.30968 6.92536 1.2372C6.88058 1.16472 6.81802 1.10488 6.74362 1.06337C6.66922 1.02186 6.58545 1.00005 6.50025 1H1.00004V0.5C1.00004 0.367392 0.947358 0.240215 0.853586 0.146447C0.759814 0.0526784 0.632632 0 0.500019 0C0.367406 0 0.240224 0.0526784 0.146452 0.146447C0.0526805 0.240215 0 0.367392 0 0.5V9.5C0 9.63261 0.0526805 9.75979 0.146452 9.85355C0.240224 9.94732 0.367406 10 0.500019 10C0.632632 10 0.759814 9.94732 0.853586 9.85355C0.947358 9.75979 1.00004 9.63261 1.00004 9.5V6H6.50025Z"
+              fill="#FF3B30"
+            />
+          </svg>
+
+          High
+        </button>
+        <button
+          type="button"
+          class="priority-btn"
+          [class.active]="selectedPriority === 'medium'"
+          (click)="selectPriority('medium')"
+        >
+          <svg
+            width="7"
+            height="10"
+            viewBox="0 0 7 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6.50025 6C6.58545 5.99995 6.66922 5.97814 6.74362 5.93663C6.81802 5.89512 6.88058 5.83528 6.92536 5.7628C6.97014 5.69032 6.99566 5.60761 6.99949 5.5225C7.00333 5.43739 6.98535 5.35271 6.94726 5.2765L6.05923 3.5L6.94726 1.7235C6.98535 1.64729 7.00333 1.56261 6.99949 1.4775C6.99566 1.39239 6.97014 1.30968 6.92536 1.2372C6.88058 1.16472 6.81802 1.10488 6.74362 1.06337C6.66922 1.02186 6.58545 1.00005 6.50025 1H1.00004V0.5C1.00004 0.367392 0.947358 0.240215 0.853586 0.146447C0.759814 0.0526784 0.632632 0 0.500019 0C0.367406 0 0.240224 0.0526784 0.146452 0.146447C0.0526805 0.240215 0 0.367392 0 0.5V9.5C0 9.63261 0.0526805 9.75979 0.146452 9.85355C0.240224 9.94732 0.367406 10 0.500019 10C0.632632 10 0.759814 9.94732 0.853586 9.85355C0.947358 9.75979 1.00004 9.63261 1.00004 9.5V6H6.50025Z"
+              fill="#FFCC00"
+            />
+          </svg>
+
+          Medium
+        </button>
+        <button
+          type="button"
+          class="priority-btn"
+          [class.active]="selectedPriority === 'low'"
+          (click)="selectPriority('low')"
+        >
+          <svg
+            width="7"
+            height="10"
+            viewBox="0 0 7 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M6.50025 6C6.58545 5.99995 6.66922 5.97814 6.74362 5.93663C6.81802 5.89512 6.88058 5.83528 6.92536 5.7628C6.97014 5.69032 6.99566 5.60761 6.99949 5.5225C7.00333 5.43739 6.98535 5.35271 6.94726 5.2765L6.05923 3.5L6.94726 1.7235C6.98535 1.64729 7.00333 1.56261 6.99949 1.4775C6.99566 1.39239 6.97014 1.30968 6.92536 1.2372C6.88058 1.16472 6.81802 1.10488 6.74362 1.06337C6.66922 1.02186 6.58545 1.00005 6.50025 1H1.00004V0.5C1.00004 0.367392 0.947358 0.240215 0.853586 0.146447C0.759814 0.0526784 0.632632 0 0.500019 0C0.367406 0 0.240224 0.0526784 0.146452 0.146447C0.0526805 0.240215 0 0.367392 0 0.5V9.5C0 9.63261 0.0526805 9.75979 0.146452 9.85355C0.240224 9.94732 0.367406 10 0.500019 10C0.632632 10 0.759814 9.94732 0.853586 9.85355C0.947358 9.75979 1.00004 9.63261 1.00004 9.5V6H6.50025Z"
+              fill="#34C759"
+            />
+          </svg>
+
+          Low
+        </button>
+      </div>
+    </div>
+
+    <!-- Dashboard URL -->
+    <div class="form-group full-width">
+      <label class="form-label"> Dashboard URL<span class="required">*</span> </label>
+      <input
+        type="url"
+        class="form-input"
+        placeholder="https://www.dashboard.com"
+        formControlName="dashboardUrl"
+      />
+    </div>
+
+    <!-- Footer with Checkbox and Submit Button -->
+    <div class="form-footer">
+      <div class="checkbox-wrapper">
+        <input
+          type="checkbox"
+          id="acceptTerms"
+          class="form-checkbox"
+          formControlName="acceptTerms"
+        />
+        <label for="acceptTerms" class="checkbox-label"> Accept terms and conditions </label>
+      </div>
+
+      <button type="submit" class="submit-btn" [disabled]="!requestForm.valid">
+        Submit Request
+      </button>
+    </div>
+  </form>
+</div>

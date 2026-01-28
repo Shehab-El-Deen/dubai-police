@@ -1,0 +1,268 @@
+<div class="details-page-wrapper" *ngIf="selectedRequest">
+  <!-- Header Section -->
+  <div class="dashboard-header">
+    <div class="header-top">
+      <h1 class="dashboard-title">Request Details</h1>
+      <span class="last-refresh">Last Refresh: Today, 09:45 AM</span>
+    </div>
+    <div class="breadcrumb">
+      <span>Dashboard</span>
+      <span class="breadcrumb-icon">›</span>
+     
+      <span class="breadcrumb-active">Home</span>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="details-container">
+    <!-- Title Section -->
+    <div class="title-section">
+      <h2 class="modal-title">{{ selectedRequest.name }}</h2>
+      <p class="request-id">Request ID: {{ selectedRequest.id }}</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Status Row -->
+    <div class="info-row">
+      <div class="info-column">
+        <label class="info-label">Status</label>
+        <span
+          class="status-badge"
+          [style.background-color]="getStatusColor(selectedRequest.status) + '20'"
+          [style.color]="getStatusColor(selectedRequest.status)"
+        >
+          <svg
+            width="8"
+            height="8"
+            viewBox="0 0 8 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.75 0C3.00832 0 2.2833 0.219934 1.66661 0.631989C1.04993 1.04404 0.569282 1.62971 0.285453 2.31494C0.00162482 3.00016 -0.0726377 3.75416 0.0720569 4.48159C0.216751 5.20902 0.573904 5.8772 1.09835 6.40165C1.6228 6.9261 2.29098 7.28325 3.01841 7.42795C3.74584 7.57264 4.49984 7.49838 5.18506 7.21455C5.87029 6.93072 6.45596 6.45007 6.86801 5.83339C7.28007 5.2167 7.5 4.49168 7.5 3.75C7.5 2.75544 7.10491 1.80161 6.40165 1.09835C5.69839 0.395088 4.74456 0 3.75 0ZM3.75 4.6875C3.56458 4.6875 3.38333 4.63252 3.22915 4.5295C3.07498 4.42649 2.95482 4.28007 2.88386 4.10877C2.81291 3.93746 2.79434 3.74896 2.83052 3.5671C2.86669 3.38525 2.95598 3.2182 3.08709 3.08709C3.2182 2.95598 3.38525 2.86669 3.5671 2.83051C3.74896 2.79434 3.93746 2.81291 4.10877 2.88386C4.28007 2.95482 4.42649 3.07498 4.5295 3.22915C4.63252 3.38332 4.6875 3.56458 4.6875 3.75C4.6875 3.99864 4.58873 4.2371 4.41291 4.41291C4.2371 4.58873 3.99864 4.6875 3.75 4.6875Z"
+              [attr.fill]="getStatusColor(selectedRequest.status)"
+            />
+          </svg>
+          {{ selectedRequest.status }}
+        </span>
+      </div>
+    </div>
+    <!-- Priority Row -->
+    <div class="info-row">
+    <div class="info-column">
+      <label class="info-label">Priority</label>
+      <span class="priority-badge">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          [style.color]="getPriorityColor(selectedRequest.priority)"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M18 14C18.1704 13.9999 18.3379 13.9563 18.4867 13.8733C18.6355 13.7902 18.7606 13.6706 18.8502 13.5256C18.9398 13.3806 18.9908 13.2152 18.9985 13.045C19.0061 12.8748 18.9702 12.7054 18.894 12.553L17.118 9L18.894 5.447C18.9702 5.29458 19.0061 5.12522 18.9985 4.95501C18.9908 4.78479 18.9398 4.61935 18.8502 4.47439C18.7606 4.32944 18.6355 4.20977 18.4867 4.12674C18.3379 4.04372 18.1704 4.00009 18 4H7V3C7 2.73478 6.89464 2.48043 6.70711 2.29289C6.51957 2.10536 6.26522 2 6 2C5.73478 2 5.48043 2.10536 5.29289 2.29289C5.10536 2.48043 5 2.73478 5 3V21C5 21.2652 5.10536 21.5196 5.29289 21.7071C5.48043 21.8946 5.73478 22 6 22C6.26522 22 6.51957 21.8946 6.70711 21.7071C6.89464 21.5196 7 21.2652 7 21V14H18Z"
+            [attr.fill]="getPriorityColor(selectedRequest.priority)"
+          />
+        </svg>
+        {{ selectedRequest.priority }}
+      </span>
+    </div>
+    </div>
+
+    <!-- Type -->
+    <div class="info-row">
+      <div class="info-column">
+        <label class="info-label">Type</label>
+        <p class="info-value">{{ selectedRequest.type }}</p>
+      </div>
+    </div>
+
+    <!-- Business Owner -->
+    <div class="info-row">
+      <div class="info-column">
+        <label class="info-label">Business Owner</label>
+        <p class="info-value">{{ selectedRequest.owner }}</p>
+      </div>
+    </div>
+
+    <!-- Submission Date -->
+    <div class="info-row">
+      <div class="info-column">
+        <label class="info-label">Submission Date</label>
+        <p class="info-value">{{ selectedRequest.date }}</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Description -->
+    <div class="section">
+      <label class="section-label">Description</label>
+      <p class="section-content">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+        has been the industry's standard dummy text ever since the 1500s, when an unknown
+        printer took a galley of type and scrambled it to make a type specimen book. It has
+        survived not only five centuries, but also the leap into electronic typesetting,
+        remaining essentially unchanged. It was popularised in the 1960s with the release of
+        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Notes for QC -->
+    <div class="section">
+      <label class="section-label">Notes for QC</label>
+      <p class="section-content">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+        has been the industry's standard dummy text ever since the 1500s, when an unknown
+        printer took a galley of type and scrambled it to make a type specimen book
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Dashboard URL -->
+    <div class="section">
+      <label class="section-label">Dashboard URL</label>
+      <a href="https://www.dashboard.com/" class="dashboard-link" target="_blank">
+        https://www.dashboard.com/
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Comment Section -->
+    <!-- <div class="section">
+      <label class="section-label">Comment</label>
+      <div class="comment-container">
+        <textarea
+          [(ngModel)]="comment"
+          placeholder="Enter your comment..."
+          class="comment-textarea"
+        ></textarea>
+        <div class="comment-toolbar">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 4H18C19.1046 4 20 4.89543 20 6V16C20 17.1046 19.1046 18 18 18H7L4 21V6C4 4.89543 4.89543 4 6 4Z"
+              stroke="#999"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3 12H21M3 6H21M3 18H21"
+              stroke="#999"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12C5 12 8 7 12 7C16 7 19 12 12 17C8 17 5 12 5 12Z"
+              stroke="#999"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 8C3.89543 8 3 8.89543 3 10V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16V10C21 8.89543 20.1046 8 19 8"
+              stroke="#999"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 5V19M5 12H19"
+              stroke="#999"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Action Buttons -->
+    <!-- <div class="action-buttons">
+      <button class="btn-reject" (click)="openRejectModal()">Reject</button>
+      <button class="btn-approve" (click)="openApproveModal()">Approve</button>
+    </div>
+    <app-approve-modal
+      *ngIf="showApproveModal"
+      (approve)="handleApprove()"
+      (cancel)="handleCancel()"
+    >
+    </app-approve-modal>
+
+    <app-reject-modal
+      *ngIf="showRejectModal"
+      (reject)="handleReject($event)"
+      (cancel)="handleCancel()"
+    >
+    </app-reject-modal>
+  </div> -->
+    <!-- Feedback/Reason Section (Only for Rejected status) -->
+    <div class="section" *ngIf="selectedRequest.status === 'Rejected'">
+      <p class="section-content feedback-content">
+        <label class="section-label">Feedback /Reason</label>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+      </p>
+    </div>
+
+    <div class="divider" *ngIf="selectedRequest.status === 'Rejected'"></div>
+
+    <!-- Reviewed By Section (For all reports) -->
+    <div class="section">
+      <label class="section-label">Reviewed by</label>
+      <div class="reviewer-info">
+        <div class="reviewer-avatar">SA</div>
+        <div class="reviewer-details">
+          <p class="reviewer-name">Seif Alazar</p>
+          <p class="reviewer-role">QC manager</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

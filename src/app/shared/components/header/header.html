@@ -1,0 +1,31 @@
+<header class="app-header">
+  <div class="header-container">
+    <!-- Left Section: Logos -->
+    <div class="header-left">
+      <div class="logo-section">
+        <img src="/imgs/sasLogo.png" alt="Analytics & Forecast" class="logo-image">
+        <div class="logo-divider"></div>
+        <img src="/imgs/policeLogo.png" alt="Dubai Police" class="logo-image">
+      </div>
+    </div>
+
+    <!-- Center Section: Portal Name (shows when logged in) -->
+    <div class="header-center" *ngIf="centerText && showUserInfo">
+      <span class="portal-name">{{ centerText }}</span>
+    </div>
+
+    <!-- Right Section: User Info or Language Button -->
+    <div class="header-right">
+      <div class="user-info" *ngIf="showUserInfo && currentUser">
+        <div class="user-details">
+          <span class="user-name">{{ currentUser.username }}</span>
+          <span class="user-role">{{ userRole | uppercase }}</span>
+        </div>
+        <div class="user-avatar">
+          {{ getUserInitials() }}
+        </div>
+      </div>
+      <!-- Language button  -->
+    </div>
+  </div>
+</header>

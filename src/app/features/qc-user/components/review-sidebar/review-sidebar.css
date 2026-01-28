@@ -1,0 +1,149 @@
+.sidebar {
+  width: 120%;
+  height: 100%;
+  background-color: #ffffff;
+  border-left: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  /* padding-right: 10px; */
+}
+
+.sidebar-section {
+  padding: 16px 0;
+  /* border-bottom: 1px solid #f0f0f0; */
+}
+
+.sidebar-section:first-child {
+  padding-top: 0;
+}
+
+.sidebar-footer {
+  border: none;
+  /* border-top: 1px solid #f0f0f0; */
+}
+
+.section-header {
+  padding: 0 25px;
+  font-size: 13px;
+  color: #727272;
+  letter-spacing: 0.5px;
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 16px;
+  color: #888888;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 8px;
+  border-radius: 8px;
+}
+
+.menu-item:hover {
+  background-color: #DFF0E8;
+  color: #1E7A60;
+}
+
+.menu-item.active {
+  background-color: #DFF0E8;
+  color: #1E7A60;
+  font-weight: 500;
+}
+
+
+.menu-label {
+  font-size: 14px;
+  flex: 1;
+  color: inherit;
+}
+
+.menu-item-collapsible {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 16px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  margin: 8px 6px;
+  border-radius: 8px;
+}
+
+.menu-item-header:hover {
+  background-color: #f8f9fa;
+  color: #666;
+}
+
+.menu-arrow {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  color: inherit;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.menu-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 4px 0;
+  margin-left: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.submenu-item {
+  padding: 8px 16px;
+  font-size: 13px;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  margin: 3px 4px 0 30px;
+  border-radius: 8px;
+}
+
+.submenu-item:hover {
+  background-color: #e8e8e8;
+  color: #666;
+}
+
+.submenu-item.active {
+  font-weight: 500;
+  background-color: #DFF0E8;
+}
+
+/* Scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}

@@ -1,0 +1,10 @@
+<div class="tabs">
+  @for (tab of tabs; track tab) {
+    <button 
+      class="tab"
+      [class.active]="activeTab === getTabId(tab)"
+      (click)="selectTab(tab)">
+      {{ tab }}
+    </button>
+  }
+</div>
