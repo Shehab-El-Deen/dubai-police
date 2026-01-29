@@ -15,7 +15,8 @@
 .main-content,
 app-business-requests-page,
 app-business-request-details-page,
-app-create-request {
+app-create-request,
+app-business-submit-request {
   width: 100%;
   flex: 1;
 }

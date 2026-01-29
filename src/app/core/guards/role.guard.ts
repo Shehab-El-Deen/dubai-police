@@ -8,18 +8,15 @@ import {
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RoleGuardService {
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
   ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const user = this.authService.getCurrentUser();
 
     if (!user) {
@@ -34,6 +31,9 @@ export class RoleGuardService {
     if (requestedRoute.includes('business') && userRole === 'business') {
       return true;
     }
+    if (requestedRoute.includes('admin') && userRole === 'admin') {
+      return true;
+    }
 
     if (requestedRoute.includes('qc') && userRole === 'qc') {
       return true;
@@ -44,6 +44,8 @@ export class RoleGuardService {
       this.router.navigate(['/business']);
     } else if (userRole === 'qc') {
       this.router.navigate(['/qc']);
+    } else if (userRole === 'admin') {
+      this.router.navigate(['/admin']);
     } else {
       this.router.navigate(['/login']);
     }
@@ -71,6 +73,10 @@ export const RoleGuard: CanActivateFn = (route, state) => {
     return true;
   }
 
+  if (requestedRoute.includes('admin') && userRole === 'admin') {
+    return true;
+  }
+
   if (requestedRoute.includes('qc') && userRole === 'qc') {
     return true;
   }
@@ -81,6 +87,9 @@ export const RoleGuard: CanActivateFn = (route, state) => {
     return false;
   } else if (userRole === 'qc') {
     router.navigate(['/qc']);
+    return false;
+  } else if (userRole === 'admin') {
+    router.navigate(['/admin']);
     return false;
   } else {
     router.navigate(['/login']);

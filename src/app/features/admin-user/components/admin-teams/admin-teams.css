@@ -1,0 +1,405 @@
+.teams-page {
+  padding: 0px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 140px);
+}
+
+.page-header {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-direction: column; */
+}
+.page-header-container {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb {
+  font-size: 12px;
+  color: #666;
+  margin-top: 8px;
+}
+
+.breadcrumb-item {
+  color: #666;
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  color: #999;
+}
+
+.breadcrumb-item.active {
+  color: #1E7A60;
+  font-weight: 600;
+}
+
+.last-refresh {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+}
+
+/* Statistics Cards */
+.stats-container {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+  gap: 16px;
+  margin-bottom: 24px;
+align-items: center;
+justify-content: space-around;
+}
+
+.stat-card {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stat-icon {
+  font-size: 24px;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Actions Container */
+.actions-container {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-box {
+  /* flex: 1; */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid #B0B0B0;
+  border-radius: 12px;
+width: 30%;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 0;
+  background: transparent;
+}
+
+.add-team-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #1E7A60;
+  border: 1px solid #1E7A60;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 150px;
+}
+
+.add-team-btn:hover {
+  background-color: #165f4d;
+  color: white !important;
+}
+
+.data-container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.users-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Filter Section */
+.filter-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #f5f5f5;
+}
+
+.status-filter {
+  padding: 8px 12px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 200px;
+  cursor: pointer;
+}
+
+/* Table Container */
+.table-container {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px #e7e7e7;
+  margin-bottom: 20px;
+}
+
+.teams-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.teams-table thead {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.teams-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.teams-table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.teams-table tbody tr:hover {
+  background-color: #fafafa;
+}
+
+.teams-table td {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+.id-cell {
+  color: #1E7A60 !important;
+  font-weight: 500;
+}
+
+.name-cell {
+  font-weight: 500;
+}
+
+.directory-cell,
+.created-by-cell {
+  color: #666;
+  font-size: 13px;
+}
+
+.date-cell {
+  color: #999;
+  font-size: 13px;
+}
+
+.status-cell {
+  text-align: center;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.toggle-switch input {
+  display: none;
+}
+
+.toggle-slider {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: #AFB5C0;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-slider.active {
+  background-color: #0DA06E;
+}
+
+.toggle-slider::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: left 0.3s ease;
+}
+
+.toggle-switch input:checked + .toggle-slider::after {
+  left: 22px;
+}
+
+.inactive-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #666;
+  background-color: #C0C0C0;
+  padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.active-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1E7A60;
+  background-color: #C4FFEE;
+  padding: 2px 6px;
+    border-radius: 6px;
+}
+
+/* Action Cell */
+.action-cell {
+  text-align: center;
+    display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.action-btn {
+  margin: 0 4px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #ddd;
+}
+
+.edit-btn {
+  color: #1E7A60;
+}
+
+.delete-btn {
+  color: #dc3545;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: white;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.pagination-info {
+  color: #999;
+  font-size: 12px;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-text {
+  color: #999;
+  font-size: 12px;
+}
+
+.page-input {
+  width: 40px;
+  padding: 4px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.pagination-btn {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background-color: #f5f5f5;
+  border-color: #999;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

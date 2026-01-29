@@ -26,7 +26,7 @@
                 Create and track a new request for quality review.
               </p>
             </div>
-            <button class="create-request-btn" (click)="onCreateRequest()">
+            <button class="create-request-btn" (click)="onSubmitRequest()">
               <svg
                 width="24"
                 height="24"
@@ -153,5 +153,9 @@
   }
   @if (currentView === 'create-request') {
     <app-create-request [onClose]="closeCreatePage"></app-create-request>
+  }
+
+   @if (currentView === 'submit-request') {
+    <app-business-submit-request [onClose]="closeSubmitPage"></app-business-submit-request>
   }
 </div>

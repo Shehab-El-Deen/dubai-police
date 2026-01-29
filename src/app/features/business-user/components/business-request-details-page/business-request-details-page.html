@@ -8,7 +8,7 @@
     <div class="breadcrumb">
       <span>Dashboard</span>
       <span class="breadcrumb-icon">›</span>
-     
+
       <span class="breadcrumb-active">Home</span>
     </div>
   </div>
@@ -17,244 +17,401 @@
   <div class="details-container">
     <!-- Title Section -->
     <div class="title-section">
-      <h2 class="modal-title">{{ selectedRequest.name }}</h2>
-      <p class="request-id">Request ID: {{ selectedRequest.id }}</p>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Status Row -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Status</label>
-        <span
-          class="status-badge"
-          [style.background-color]="getStatusColor(selectedRequest.status) + '20'"
-          [style.color]="getStatusColor(selectedRequest.status)"
-        >
+      <div>
+        <h2 class="modal-title">{{ selectedRequest.name }}</h2>
+        <p class="request-id">Request ID: {{ selectedRequest.id }}</p>
+        <div class="section">
           <svg
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path
-              d="M3.75 0C3.00832 0 2.2833 0.219934 1.66661 0.631989C1.04993 1.04404 0.569282 1.62971 0.285453 2.31494C0.00162482 3.00016 -0.0726377 3.75416 0.0720569 4.48159C0.216751 5.20902 0.573904 5.8772 1.09835 6.40165C1.6228 6.9261 2.29098 7.28325 3.01841 7.42795C3.74584 7.57264 4.49984 7.49838 5.18506 7.21455C5.87029 6.93072 6.45596 6.45007 6.86801 5.83339C7.28007 5.2167 7.5 4.49168 7.5 3.75C7.5 2.75544 7.10491 1.80161 6.40165 1.09835C5.69839 0.395088 4.74456 0 3.75 0ZM3.75 4.6875C3.56458 4.6875 3.38333 4.63252 3.22915 4.5295C3.07498 4.42649 2.95482 4.28007 2.88386 4.10877C2.81291 3.93746 2.79434 3.74896 2.83052 3.5671C2.86669 3.38525 2.95598 3.2182 3.08709 3.08709C3.2182 2.95598 3.38525 2.86669 3.5671 2.83051C3.74896 2.79434 3.93746 2.81291 4.10877 2.88386C4.28007 2.95482 4.42649 3.07498 4.5295 3.22915C4.63252 3.38332 4.6875 3.56458 4.6875 3.75C4.6875 3.99864 4.58873 4.2371 4.41291 4.41291C4.2371 4.58873 3.99864 4.6875 3.75 4.6875Z"
-              [attr.fill]="getStatusColor(selectedRequest.status)"
-            />
+            <g clip-path="url(#clip0_326_57050)">
+              <path
+                d="M3.9215 13.8603C3.0164 13.8603 2.1687 13.4718 1.5569 12.8523C0.3704 11.6511 0.0400006 9.55462 1.7032 7.87112L8.5268 0.96212C9.2184 0.26212 10.0983 -0.00878046 10.9404 0.22012C11.7685 0.44412 12.4461 1.13082 12.668 1.96872C12.8934 2.82272 12.6267 3.71382 11.9358 4.41382L5.4097 11.0218C5.0373 11.3991 4.6159 11.6224 4.1931 11.6672C3.7738 11.712 3.3741 11.5762 3.0941 11.2927C2.5873 10.7775 2.5145 9.81082 3.3587 8.95682L7.9423 4.31582C8.1306 4.12542 8.4358 4.12542 8.6241 4.31582C8.8124 4.50622 8.8124 4.81562 8.6241 5.00602L4.0398 9.64772C3.6436 10.0481 3.6072 10.431 3.7759 10.6025C3.8501 10.6767 3.9621 10.711 4.0916 10.6963C4.2897 10.676 4.5158 10.5451 4.7279 10.3316L11.254 3.72432C11.702 3.27072 11.8735 2.73732 11.737 2.22282C11.6689 1.97116 11.5369 1.74139 11.3537 1.55582C11.1706 1.37024 10.9426 1.23517 10.6919 1.16372C10.1837 1.02582 9.6559 1.20012 9.2079 1.65372L2.3843 8.56272C1.1131 9.85002 1.4176 11.3319 2.238 12.1628C3.0591 12.9937 4.5214 13.3031 5.7933 12.0144L12.6169 5.10542C12.6614 5.06017 12.7145 5.02423 12.773 4.9997C12.8315 4.97517 12.8943 4.96253 12.9578 4.96253C13.0213 4.96253 13.0841 4.97517 13.1426 4.9997C13.2011 5.02423 13.2542 5.06017 13.2987 5.10542C13.3893 5.19758 13.4401 5.32164 13.4401 5.45087C13.4401 5.5801 13.3893 5.70416 13.2987 5.79632L6.4751 12.7053C5.6708 13.5187 4.7699 13.8603 3.9215 13.8603Z"
+                fill="#2A2A2A"
+                fill-opacity="0.5"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_326_57050">
+                <rect width="14" height="14" fill="white" />
+              </clipPath>
+            </defs>
           </svg>
-          {{ selectedRequest.status }}
-        </span>
-      </div>
-    </div>
-    <!-- Priority Row -->
-    <div class="info-row">
-    <div class="info-column">
-      <label class="info-label">Priority</label>
-      <span class="priority-badge">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          [style.color]="getPriorityColor(selectedRequest.priority)"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M18 14C18.1704 13.9999 18.3379 13.9563 18.4867 13.8733C18.6355 13.7902 18.7606 13.6706 18.8502 13.5256C18.9398 13.3806 18.9908 13.2152 18.9985 13.045C19.0061 12.8748 18.9702 12.7054 18.894 12.553L17.118 9L18.894 5.447C18.9702 5.29458 19.0061 5.12522 18.9985 4.95501C18.9908 4.78479 18.9398 4.61935 18.8502 4.47439C18.7606 4.32944 18.6355 4.20977 18.4867 4.12674C18.3379 4.04372 18.1704 4.00009 18 4H7V3C7 2.73478 6.89464 2.48043 6.70711 2.29289C6.51957 2.10536 6.26522 2 6 2C5.73478 2 5.48043 2.10536 5.29289 2.29289C5.10536 2.48043 5 2.73478 5 3V21C5 21.2652 5.10536 21.5196 5.29289 21.7071C5.48043 21.8946 5.73478 22 6 22C6.26522 22 6.51957 21.8946 6.70711 21.7071C6.89464 21.5196 7 21.2652 7 21V14H18Z"
-            [attr.fill]="getPriorityColor(selectedRequest.priority)"
-          />
-        </svg>
-        {{ selectedRequest.priority }}
-      </span>
-    </div>
-    </div>
 
-    <!-- Type -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Type</label>
-        <p class="info-value">{{ selectedRequest.type }}</p>
-      </div>
-    </div>
-
-    <!-- Business Owner -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Business Owner</label>
-        <p class="info-value">{{ selectedRequest.owner }}</p>
-      </div>
-    </div>
-
-    <!-- Submission Date -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Submission Date</label>
-        <p class="info-value">{{ selectedRequest.date }}</p>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Description -->
-    <div class="section">
-      <label class="section-label">Description</label>
-      <p class="section-content">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-        has been the industry's standard dummy text ever since the 1500s, when an unknown
-        printer took a galley of type and scrambled it to make a type specimen book. It has
-        survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of
-        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Notes for QC -->
-    <div class="section">
-      <label class="section-label">Notes for QC</label>
-      <p class="section-content">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-        has been the industry's standard dummy text ever since the 1500s, when an unknown
-        printer took a galley of type and scrambled it to make a type specimen book
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Dashboard URL -->
-    <div class="section">
-      <label class="section-label">Dashboard URL</label>
-      <a href="https://www.dashboard.com/" class="dashboard-link" target="_blank">
-        https://www.dashboard.com/
-      </a>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Comment Section -->
-    <!-- <div class="section">
-      <label class="section-label">Comment</label>
-      <div class="comment-container">
-        <textarea
-          [(ngModel)]="comment"
-          placeholder="Enter your comment..."
-          class="comment-textarea"
-        ></textarea>
-        <div class="comment-toolbar">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 4H18C19.1046 4 20 4.89543 20 6V16C20 17.1046 19.1046 18 18 18H7L4 21V6C4 4.89543 4.89543 4 6 4Z"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 12H21M3 6H21M3 18H21"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 12C5 12 8 7 12 7C16 7 19 12 12 17C8 17 5 12 5 12Z"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 8C3.89543 8 3 8.89543 3 10V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16V10C21 8.89543 20.1046 8 19 8"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 5V19M5 12H19"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
+          <label class="section-label">Dashboard URL:</label>
+          <a href="https://www.dashboard.com/" class="dashboard-link" target="_blank">
+            https://www.dashboard.com/
+          </a>
         </div>
       </div>
-    </div> -->
-
-    <!-- Action Buttons -->
-    <!-- <div class="action-buttons">
-      <button class="btn-reject" (click)="openRejectModal()">Reject</button>
-      <button class="btn-approve" (click)="openApproveModal()">Approve</button>
+      <div
+        class="grade"
+        *ngIf="selectedRequest"
+        [ngStyle]="{
+          backgroundColor: getStatusColor(selectedRequest.status) + '33',
+        }"
+      >
+        <div class="grade-value">30%</div>
+        <div class="grade-label">QA Score</div>
+      </div>
     </div>
-    <app-approve-modal
-      *ngIf="showApproveModal"
-      (approve)="handleApprove()"
-      (cancel)="handleCancel()"
-    >
-    </app-approve-modal>
 
-    <app-reject-modal
-      *ngIf="showRejectModal"
-      (reject)="handleReject($event)"
-      (cancel)="handleCancel()"
-    >
-    </app-reject-modal>
-  </div> -->
+    <div class="divider"></div>
+
+    <div class="row-container">
+      <div class="subrow">
+        <!-- Status Row -->
+        <div class="info-row">
+          <div class="info-column">
+            <label class="info-label">Status</label>
+            <span
+              class="status-badge"
+              [style.background-color]="getStatusColor(selectedRequest.status) + '20'"
+              [style.color]="getStatusColor(selectedRequest.status)"
+            >
+              <svg
+                width="8"
+                height="8"
+                viewBox="0 0 8 8"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.75 0C3.00832 0 2.2833 0.219934 1.66661 0.631989C1.04993 1.04404 0.569282 1.62971 0.285453 2.31494C0.00162482 3.00016 -0.0726377 3.75416 0.0720569 4.48159C0.216751 5.20902 0.573904 5.8772 1.09835 6.40165C1.6228 6.9261 2.29098 7.28325 3.01841 7.42795C3.74584 7.57264 4.49984 7.49838 5.18506 7.21455C5.87029 6.93072 6.45596 6.45007 6.86801 5.83339C7.28007 5.2167 7.5 4.49168 7.5 3.75C7.5 2.75544 7.10491 1.80161 6.40165 1.09835C5.69839 0.395088 4.74456 0 3.75 0ZM3.75 4.6875C3.56458 4.6875 3.38333 4.63252 3.22915 4.5295C3.07498 4.42649 2.95482 4.28007 2.88386 4.10877C2.81291 3.93746 2.79434 3.74896 2.83052 3.5671C2.86669 3.38525 2.95598 3.2182 3.08709 3.08709C3.2182 2.95598 3.38525 2.86669 3.5671 2.83051C3.74896 2.79434 3.93746 2.81291 4.10877 2.88386C4.28007 2.95482 4.42649 3.07498 4.5295 3.22915C4.63252 3.38332 4.6875 3.56458 4.6875 3.75C4.6875 3.99864 4.58873 4.2371 4.41291 4.41291C4.2371 4.58873 3.99864 4.6875 3.75 4.6875Z"
+                  [attr.fill]="getStatusColor(selectedRequest.status)"
+                />
+              </svg>
+              {{ selectedRequest.status }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Submitted By -->
+        <div class="info-row">
+          <div class="info-column">
+            <label class="info-label">Submitted By</label>
+            <p class="info-value">Hassan Elrashidy</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subrow">
+        <!-- Submission Date -->
+        <div class="info-row">
+          <div class="info-column">
+            <label class="info-label">Submission Date</label>
+            <p class="info-value">{{ selectedRequest.date }}</p>
+          </div>
+        </div>
+
+        <!-- Business Owner -->
+        <div class="info-row">
+          <div class="info-column">
+            <label class="info-label">Business Owner</label>
+            <p class="info-value">{{ selectedRequest.owner }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="qc-grading">
+      <div class="qc-grading-title">QC Grading</div>
+
+      <div class="qc-grading-grid">
+        <!-- Left Column -->
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+              <div class="criterion-text">
+                <div class="criterion-name">Graphical Representation</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">10 out of 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+              <div class="criterion-text">
+                <div class="criterion-name">Branding Standards</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">9 out of 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+              <div class="criterion-text">
+                <div class="criterion-name">Font Sizing Guidelines</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">8 out of 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+              <div class="criterion-text">
+                <div class="criterion-name">Color Application</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">8 out of 10</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+              <div class="criterion-text">
+                <div class="criterion-name">Labeling Data</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">8 out of 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+              <div class="criterion-text">
+                <div class="criterion-name">Accurate Data Customization</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">10 out of 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+
+              <div class="criterion-text">
+                <div class="criterion-name">Graphical Representation</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">10 out of 10</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="qc-criterion-card">
+          <div class="criterion-header">
+            <div class="criterion-info">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10 17.5C10.9849 17.5 11.9602 17.306 12.8701 16.9291C13.7801 16.5522 14.6069 15.9997 15.3033 15.3033C15.9997 14.6069 16.5522 13.7801 16.9291 12.8701C17.306 11.9602 17.5 10.9849 17.5 10C17.5 9.01509 17.306 8.03982 16.9291 7.12987C16.5522 6.21993 15.9997 5.39314 15.3033 4.6967C14.6069 4.00026 13.7801 3.44781 12.8701 3.0709C11.9602 2.69399 10.9849 2.5 10 2.5C8.01088 2.5 6.10322 3.29018 4.6967 4.6967C3.29018 6.10322 2.5 8.01088 2.5 10C2.5 11.9891 3.29018 13.8968 4.6967 15.3033C6.10322 16.7098 8.01088 17.5 10 17.5ZM9.80667 13.0333L13.9733 8.03333L12.6933 6.96667L9.11 11.2658L7.25583 9.41083L6.0775 10.5892L8.5775 13.0892L9.2225 13.7342L9.80667 13.0333Z"
+                  fill="#34C759"
+                />
+              </svg>
+              <div class="criterion-text">
+                <div class="criterion-name">Avoid Using Tables for Details</div>
+                <div class="criterion-description">
+                  Visual Design must follow the established guidelines
+                </div>
+              </div>
+            </div>
+
+            <div class="vertical-divider"></div>
+
+            <div class="evaluation-box">
+              <div class="evaluation-label">Evaluation</div>
+              <div class="evaluation-score">10 out of 10</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
     <!-- Feedback/Reason Section (Only for Rejected status) -->
     <div class="section" *ngIf="selectedRequest.status === 'Rejected'">
       <p class="section-content feedback-content">
         <label class="section-label">Feedback /Reason</label>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book
+        <br />
+        <span class="section-reviewer">Reviewed by: Zeyad</span>
       </p>
     </div>
 
     <div class="divider" *ngIf="selectedRequest.status === 'Rejected'"></div>
 
     <!-- Reviewed By Section (For all reports) -->
-    <div class="section">
+    <!-- <div class="section">
       <label class="section-label">Reviewed by</label>
       <div class="reviewer-info">
         <div class="reviewer-avatar">SA</div>
@@ -263,6 +420,6 @@
           <p class="reviewer-role">QC manager</p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>

@@ -8,12 +8,10 @@
     <div class="breadcrumb">
       <span>Dashboard</span>
       <span class="breadcrumb-icon">›</span>
-     
+
       <span class="breadcrumb-active">Home</span>
     </div>
   </div>
-
-  <!-- Main Content -->
   <div class="details-container">
     <!-- Title Section -->
     <div class="title-section">
@@ -21,227 +19,366 @@
       <p class="request-id">Request ID: {{ selectedRequest.id }}</p>
     </div>
 
-    <div class="divider"></div>
+    <!-- Main Content Grid -->
+    <div class="details-grid">
+      <!-- Left Column - Overview -->
+      <div class="overview-card">
+        <div class="card-header">
+          <h3 class="card-title">Overview</h3>
+        </div>
 
-    <!-- Status Row -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Status</label>
-        <span
-          class="status-badge"
-          [style.background-color]="getStatusColor(selectedRequest.status) + '20'"
-          [style.color]="getStatusColor(selectedRequest.status)"
-        >
+        <div class="dashboard-url-section">
+          <div class="dashboard-title">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_326_58371)">
+                <path
+                  d="M3.92138 13.8603C3.01628 13.8603 2.16858 13.4718 1.55678 12.8523C0.370278 11.6511 0.0398785 9.55462 1.70308 7.87112L8.52668 0.96212C9.21828 0.26212 10.0982 -0.00878046 10.9403 0.22012C11.7684 0.44412 12.446 1.13082 12.6679 1.96872C12.8933 2.82272 12.6266 3.71382 11.9357 4.41382L5.40958 11.0218C5.03718 11.3991 4.61578 11.6224 4.19298 11.6672C3.77368 11.712 3.37398 11.5762 3.09398 11.2927C2.58718 10.7775 2.51438 9.81082 3.35858 8.95682L7.94218 4.31582C8.13048 4.12542 8.43568 4.12542 8.62398 4.31582C8.81228 4.50622 8.81228 4.81562 8.62398 5.00602L4.03968 9.64772C3.64348 10.0481 3.60708 10.431 3.77578 10.6025C3.84998 10.6767 3.96198 10.711 4.09148 10.6963C4.28958 10.676 4.51568 10.5451 4.72778 10.3316L11.2539 3.72432C11.7019 3.27072 11.8734 2.73732 11.7369 2.22282C11.6688 1.97116 11.5367 1.74139 11.3536 1.55582C11.1705 1.37024 10.9425 1.23517 10.6918 1.16372C10.1836 1.02582 9.65578 1.20012 9.20778 1.65372L2.38418 8.56272C1.11298 9.85002 1.41748 11.3319 2.23788 12.1628C3.05898 12.9937 4.52128 13.3031 5.79318 12.0144L12.6168 5.10542C12.6613 5.06017 12.7143 5.02423 12.7729 4.9997C12.8314 4.97517 12.8942 4.96253 12.9577 4.96253C13.0211 4.96253 13.084 4.97517 13.1425 4.9997C13.201 5.02423 13.2541 5.06017 13.2986 5.10542C13.3892 5.19758 13.4399 5.32164 13.4399 5.45087C13.4399 5.5801 13.3892 5.70416 13.2986 5.79632L6.47498 12.7053C5.67068 13.5187 4.76978 13.8603 3.92138 13.8603Z"
+                  fill="#2A2A2A"
+                  fill-opacity="0.5"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_326_58371">
+                  <rect width="14" height="14" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+
+            <span class="url-label">Dashboard URL</span>
+          </div>
+          <a href="https://www.dashboard.com/" class="dashboard-link" target="_blank">
+            https://www.dashboard.com/
+          </a>
+        </div>
+
+        <div class="qa-score-container">
+          <div class="score-circle">
+            <svg class="score-ring" width="140" height="140" viewBox="0 0 140 140">
+              <circle
+                class="score-ring-background"
+                cx="70"
+                cy="70"
+                r="60"
+                fill="none"
+                stroke="#e8f5f1"
+                stroke-width="12"
+              />
+              <circle
+                class="score-ring-progress"
+                cx="70"
+                cy="70"
+                r="60"
+                fill="none"
+                stroke="#1E7A60"
+                stroke-width="12"
+                stroke-linecap="round"
+                [style.stroke-dasharray]="377"
+                [style.stroke-dashoffset]="377 - (377 * 80) / 100"
+                transform="rotate(-90 70 70)"
+              />
+            </svg>
+            <div class="score-text">
+              <span class="score-value">80%</span>
+            </div>
+          </div>
+          <p class="score-label">QA Score</p>
+        </div>
+
+        <div class="overview-details">
+          <div class="detail-row">
+            <span class="detail-label">Department</span>
+            <span class="detail-value">{{ selectedRequest.owner || 'Traffic Dept' }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Submission Date</span>
+            <span class="detail-value">{{ selectedRequest.date }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Grading -->
+      <div class="grading-card">
+        <div class="card-header">
+          <h3 class="card-title">Grading</h3>
+          <p class="card-subtitle">Enter scores for each category</p>
+        </div>
+
+        <div class="grading-items">
+          <div class="grading-item">
+            <div class="grading-info">
+              <h4 class="grading-title">Correct data customization</h4>
+              <p class="grading-description">Visual Design adheres to the guidelines</p>
+            </div>
+            <div class="score-input-wrapper">
+              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <span class="score-max">/ 10</span>
+            </div>
+          </div>
+
+          <div class="grading-item">
+            <div class="grading-info">
+              <h4 class="grading-title">Visual Representation</h4>
+              <p class="grading-description">Visual Design adheres to the guidelines</p>
+            </div>
+            <div class="score-input-wrapper">
+              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <span class="score-max">/ 10</span>
+            </div>
+          </div>
+
+          <div class="grading-item">
+            <div class="grading-info">
+              <h4 class="grading-title">Data Labeling</h4>
+              <p class="grading-description">Visual Design adheres to the guidelines</p>
+            </div>
+            <div class="score-input-wrapper">
+              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <span class="score-max">/ 10</span>
+            </div>
+          </div>
+
+          <div class="grading-item">
+            <div class="grading-info">
+              <h4 class="grading-title">Visual Representation</h4>
+              <p class="grading-description">Visual Design adheres to the guidelines</p>
+            </div>
+            <div class="score-input-wrapper">
+              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <span class="score-max">/ 10</span>
+            </div>
+          </div>
+
+          <div class="grading-item">
+            <div class="grading-info">
+              <h4 class="grading-title">Brand Guidelines</h4>
+              <p class="grading-description">Visual Design adheres to the guidelines</p>
+            </div>
+            <div class="score-input-wrapper">
+              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <span class="score-max">/ 10</span>
+            </div>
+          </div>
+
+          <div class="grading-item">
+            <div class="grading-info">
+              <h4 class="grading-title">Avoid Details using tables</h4>
+              <p class="grading-description">Visual Design adheres to the guidelines</p>
+            </div>
+            <div class="score-input-wrapper">
+              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <span class="score-max">/ 10</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="total-score">
+          <span class="total-label">Total Score</span>
+          <span class="total-value">90 <span class="total-max">/ 100</span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+      <!-- Rejection Reason -->
+      <div class="rejection-section">
+        <label class="section-label">Rejection Reason</label>
+        <div class="custom-select">
+          <select class="rejection-select">
+            <option value="">Traffic Accident Hotspots: Dashboard</option>
+            <option value="quality">Quality Issues</option>
+            <option value="incomplete">Incomplete Data</option>
+            <option value="guidelines">Doesn't Follow Guidelines</option>
+          </select>
           <svg
-            width="8"
+            class="select-arrow"
+            width="12"
             height="8"
-            viewBox="0 0 8 8"
+            viewBox="0 0 12 8"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M3.75 0C3.00832 0 2.2833 0.219934 1.66661 0.631989C1.04993 1.04404 0.569282 1.62971 0.285453 2.31494C0.00162482 3.00016 -0.0726377 3.75416 0.0720569 4.48159C0.216751 5.20902 0.573904 5.8772 1.09835 6.40165C1.6228 6.9261 2.29098 7.28325 3.01841 7.42795C3.74584 7.57264 4.49984 7.49838 5.18506 7.21455C5.87029 6.93072 6.45596 6.45007 6.86801 5.83339C7.28007 5.2167 7.5 4.49168 7.5 3.75C7.5 2.75544 7.10491 1.80161 6.40165 1.09835C5.69839 0.395088 4.74456 0 3.75 0ZM3.75 4.6875C3.56458 4.6875 3.38333 4.63252 3.22915 4.5295C3.07498 4.42649 2.95482 4.28007 2.88386 4.10877C2.81291 3.93746 2.79434 3.74896 2.83052 3.5671C2.86669 3.38525 2.95598 3.2182 3.08709 3.08709C3.2182 2.95598 3.38525 2.86669 3.5671 2.83051C3.74896 2.79434 3.93746 2.81291 4.10877 2.88386C4.28007 2.95482 4.42649 3.07498 4.5295 3.22915C4.63252 3.38332 4.6875 3.56458 4.6875 3.75C4.6875 3.99864 4.58873 4.2371 4.41291 4.41291C4.2371 4.58873 3.99864 4.6875 3.75 4.6875Z"
-              [attr.fill]="getStatusColor(selectedRequest.status)"
-            />
-          </svg>
-          {{ selectedRequest.status }}
-        </span>
-      </div>
-    </div>
-    <!-- Priority Row -->
-    <div class="info-row">
-    <div class="info-column">
-      <label class="info-label">Priority</label>
-      <span class="priority-badge">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          [style.color]="getPriorityColor(selectedRequest.priority)"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M18 14C18.1704 13.9999 18.3379 13.9563 18.4867 13.8733C18.6355 13.7902 18.7606 13.6706 18.8502 13.5256C18.9398 13.3806 18.9908 13.2152 18.9985 13.045C19.0061 12.8748 18.9702 12.7054 18.894 12.553L17.118 9L18.894 5.447C18.9702 5.29458 19.0061 5.12522 18.9985 4.95501C18.9908 4.78479 18.9398 4.61935 18.8502 4.47439C18.7606 4.32944 18.6355 4.20977 18.4867 4.12674C18.3379 4.04372 18.1704 4.00009 18 4H7V3C7 2.73478 6.89464 2.48043 6.70711 2.29289C6.51957 2.10536 6.26522 2 6 2C5.73478 2 5.48043 2.10536 5.29289 2.29289C5.10536 2.48043 5 2.73478 5 3V21C5 21.2652 5.10536 21.5196 5.29289 21.7071C5.48043 21.8946 5.73478 22 6 22C6.26522 22 6.51957 21.8946 6.70711 21.7071C6.89464 21.5196 7 21.2652 7 21V14H18Z"
-            [attr.fill]="getPriorityColor(selectedRequest.priority)"
-          />
-        </svg>
-        {{ selectedRequest.priority }}
-      </span>
-    </div>
-    </div>
-
-    <!-- Type -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Type</label>
-        <p class="info-value">{{ selectedRequest.type }}</p>
-      </div>
-    </div>
-
-    <!-- Business Owner -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Business Owner</label>
-        <p class="info-value">{{ selectedRequest.owner }}</p>
-      </div>
-    </div>
-
-    <!-- Submission Date -->
-    <div class="info-row">
-      <div class="info-column">
-        <label class="info-label">Submission Date</label>
-        <p class="info-value">{{ selectedRequest.date }}</p>
-      </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Description -->
-    <div class="section">
-      <label class="section-label">Description</label>
-      <p class="section-content">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-        has been the industry's standard dummy text ever since the 1500s, when an unknown
-        printer took a galley of type and scrambled it to make a type specimen book. It has
-        survived not only five centuries, but also the leap into electronic typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of
-        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
-        publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Notes for QC -->
-    <div class="section">
-      <label class="section-label">Notes for QC</label>
-      <p class="section-content">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-        has been the industry's standard dummy text ever since the 1500s, when an unknown
-        printer took a galley of type and scrambled it to make a type specimen book
-      </p>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Dashboard URL -->
-    <div class="section">
-      <label class="section-label">Dashboard URL</label>
-      <a href="https://www.dashboard.com/" class="dashboard-link" target="_blank">
-        https://www.dashboard.com/
-      </a>
-    </div>
-
-    <div class="divider"></div>
-
-    <!-- Comment Section -->
-    <div class="section">
-      <label class="section-label">Comment</label>
-      <div class="comment-container">
-        <textarea
-          [(ngModel)]="comment"
-          placeholder="Enter your comment..."
-          class="comment-textarea"
-        ></textarea>
-        <div class="comment-toolbar">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6 4H18C19.1046 4 20 4.89543 20 6V16C20 17.1046 19.1046 18 18 18H7L4 21V6C4 4.89543 4.89543 4 6 4Z"
-              stroke="#999"
+              d="M1 1.5L6 6.5L11 1.5"
+              stroke="#666"
               stroke-width="1.5"
               stroke-linecap="round"
               stroke-linejoin="round"
             />
           </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 12H21M3 6H21M3 18H21"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 12C5 12 8 7 12 7C16 7 19 12 12 17C8 17 5 12 5 12Z"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M5 8C3.89543 8 3 8.89543 3 10V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16V10C21 8.89543 20.1046 8 19 8"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 5V19M5 12H19"
-              stroke="#999"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
+        </div>
+      </div>
+
+      <!-- Comments Section -->
+      <div class="comments-section">
+        <label class="section-label">Comments/ Feedback</label>
+        <div class="comment-input-wrapper">
+          <textarea
+            [(ngModel)]="comment"
+            placeholder="Enter your comment..."
+            class="comment-textarea"
+          ></textarea>
+          <div class="comment-toolbar">
+            <button class="toolbar-btn" title="Text formatting">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M4 7V4H20V7M9 20H15M12 4V20"
+                  stroke="#999"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="toolbar-btn" title="Bold">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 4H14C15.0609 4 16.0783 4.42143 16.8284 5.17157C17.5786 5.92172 18 6.93913 18 8C18 9.06087 17.5786 10.0783 16.8284 10.8284C16.0783 11.5786 15.0609 12 14 12H6V4Z"
+                  stroke="#999"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6 12H15C16.0609 12 17.0783 12.4214 17.8284 13.1716C18.5786 13.9217 19 14.9391 19 16C19 17.0609 18.5786 18.0783 17.8284 18.8284C17.0783 19.5786 16.0609 20 15 20H6V12Z"
+                  stroke="#999"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="toolbar-btn" title="Emoji">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="12" cy="12" r="10" stroke="#999" stroke-width="2" />
+                <path
+                  d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14"
+                  stroke="#999"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <circle cx="9" cy="9" r="1" fill="#999" />
+                <circle cx="15" cy="9" r="1" fill="#999" />
+              </svg>
+            </button>
+            <button class="toolbar-btn" title="Link">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 13C10.4295 13.5741 10.9774 14.0492 11.6066 14.3929C12.2357 14.7367 12.9315 14.9411 13.6467 14.9923C14.3618 15.0435 15.0796 14.9403 15.7513 14.6898C16.4231 14.4392 17.0331 14.0471 17.54 13.54L20.54 10.54C21.4508 9.59699 21.9548 8.33397 21.9434 7.02299C21.932 5.71201 21.4061 4.45794 20.4791 3.53087C19.5521 2.60379 18.298 2.07802 16.987 2.0666C15.676 2.05519 14.413 2.55918 13.47 3.47L11.75 5.18"
+                  stroke="#999"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M14 11C13.5705 10.4259 13.0226 9.95083 12.3934 9.60707C11.7642 9.26331 11.0685 9.05889 10.3533 9.00768C9.63816 8.95646 8.92037 9.05967 8.24861 9.31022C7.57685 9.56077 6.96684 9.9529 6.45996 10.46L3.45996 13.46C2.54917 14.403 2.04518 15.666 2.05659 16.977C2.06801 18.288 2.59378 19.5421 3.52085 20.4691C4.44793 21.3962 5.702 21.922 7.01298 21.9334C8.32396 21.9448 9.58698 21.4408 10.53 20.53L12.24 18.82"
+                  stroke="#999"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button class="toolbar-btn" title="Attachment">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.44 11.05L12.25 20.24C11.1242 21.3658 9.59723 21.9983 8.005 21.9983C6.41277 21.9983 4.88583 21.3658 3.76 20.24C2.63417 19.1142 2.00166 17.5872 2.00166 15.995C2.00166 14.4028 2.63417 12.8758 3.76 11.75L12.33 3.18C13.0806 2.42944 14.0988 2.00667 15.16 2.00667C16.2212 2.00667 17.2394 2.42944 17.99 3.18C18.7406 3.93056 19.1633 4.94877 19.1633 6.01C19.1633 7.07123 18.7406 8.08944 17.99 8.84L9.41 17.41C9.03472 17.7853 8.52556 17.9967 7.995 17.9967C7.46444 17.9967 6.95528 17.7853 6.58 17.41C6.20472 17.0347 5.99334 16.5256 5.99334 15.995C5.99334 15.4644 6.20472 14.9553 6.58 14.58L15.07 6.1"
+                  stroke="#999"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Action Buttons -->
     <div class="action-buttons">
-      <button class="btn-reject" (click)="openRejectModal()">Reject</button>
-      <button class="btn-approve" (click)="openApproveModal()">Approve</button>
+      <button class="btn-reject" (click)="openRejectModal()">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Reject
+      </button>
+      <button class="btn-approve" (click)="openApproveModal()">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 6L9 17L4 12"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        Approve
+      </button>
     </div>
-    <app-approve-modal
-      *ngIf="showApproveModal"
-      (approve)="handleApprove()"
-      (cancel)="handleCancel()"
-    >
-    </app-approve-modal>
-
-    <app-reject-modal
-      *ngIf="showRejectModal"
-      (reject)="handleReject($event)"
-      (cancel)="handleCancel()"
-    >
-    </app-reject-modal>
   </div>
+
+  <app-approve-modal *ngIf="showApproveModal" (approve)="handleApprove()" (cancel)="handleCancel()">
+  </app-approve-modal>
+
+  <app-reject-modal
+    *ngIf="showRejectModal"
+    (reject)="handleReject($event)"
+    (cancel)="handleCancel()"
+  >
+  </app-reject-modal>
 </div>
-         

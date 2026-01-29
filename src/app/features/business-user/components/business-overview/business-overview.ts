@@ -11,10 +11,10 @@ import { BusinessRequestDetailsPage } from "../business-request-details-page/bus
 import { BusinessRequestsPage } from "../business-requests-page/business-requests-page";
 import { BusinessRequestDetailModal } from '../business-request-detail-modal/business-request-detail-modal';
 import { CreateRequest } from "../create-request/create-request";
-
+import { BusinessSubmitRequest } from '../business-submit-request/business-submit-request';
 @Component({
   selector: 'app-business-overview',
-  imports: [CommonModule, FormsModule, BusinessReviewSidebar, BusinessRequestTable, BusinessTabNavigation, BusinessRequestDetailsPage, BusinessRequestsPage, BusinessRequestDetailModal, CreateRequest],
+  imports: [CommonModule, FormsModule, BusinessReviewSidebar, BusinessRequestTable, BusinessTabNavigation, BusinessRequestDetailsPage, BusinessRequestsPage, BusinessRequestDetailModal, CreateRequest, BusinessSubmitRequest],
   templateUrl: './business-overview.html',
   styleUrl: './business-overview.css',
 })
@@ -31,6 +31,7 @@ export class BusinessOverview implements OnInit {
   totalPages = 1;
   selectedRequest: TableRequest | null = null;
   @Output() viewCreatePage = new EventEmitter<void>();
+  @Output() viewSubmitPage = new EventEmitter<void>();
   
 
   requests: TableRequest[] = [
@@ -184,6 +185,10 @@ export class BusinessOverview implements OnInit {
     this.currentView = 'overview';
   }
 
+   closeSubmitPage() {
+    this.currentView = 'overview';
+  }
+
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
@@ -209,6 +214,10 @@ export class BusinessOverview implements OnInit {
 
   onCreateRequest() {
     this.currentView = 'create-request';
+  }
+
+   onSubmitRequest() {
+    this.currentView = 'submit-request';
   }
 
 }

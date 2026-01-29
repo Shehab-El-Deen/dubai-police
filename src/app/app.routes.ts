@@ -4,6 +4,8 @@ import { RoleGuard } from './core/guards/role.guard';
 import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { BusinessLayout } from './layouts/business-layout/business-layout';
 import { QcLayout } from './layouts/qc-layout/qc-layout';
+import { AdminLayout } from './layouts/admin-layout/admin-layout';
+
 
 export const routes: Routes = [
   {
@@ -25,6 +27,13 @@ export const routes: Routes = [
     canActivate: [AuthGuard, RoleGuard],
     loadChildren: () =>
       import('./features/qc-user/qc-user.module').then(m => m.QcUserModule)
+  },
+  {
+    path: 'admin',
+    component: AdminLayout,
+    canActivate: [AuthGuard, RoleGuard],
+    loadChildren: () =>
+      import('./features/admin-user/admin-user.module').then(m => m.AdminUserModule)
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];

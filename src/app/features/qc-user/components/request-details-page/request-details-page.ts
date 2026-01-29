@@ -23,6 +23,16 @@ export class RequestDetailsPage implements OnInit, OnDestroy {
   showApproveModal = false;
   showRejectModal = false;
 
+  // Grading scores
+  scores = {
+    dataCustomization: 0,
+    visualRepresentation1: 0,
+    dataLabeling: 0,
+    visualRepresentation2: 0,
+    brandGuidelines: 0,
+    avoidTables: 0
+  };
+
   ngOnInit() {
     // Component initialized
   }
@@ -54,6 +64,10 @@ export class RequestDetailsPage implements OnInit, OnDestroy {
     if (this.onClose) {
       this.onClose();
     }
+  }
+
+  getTotalScore(): number {
+    return Object.values(this.scores).reduce((sum, score) => sum + score, 0);
   }
 
   getStatusColor(status: string): string {

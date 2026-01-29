@@ -69,6 +69,8 @@ export class AuthService {
       return 'business';
     } else if (username.toLowerCase().includes('qc')) {
       return 'qc';
+    } else if (username.toLowerCase().includes('admin')) {
+      return 'admin';
     }
     return 'user';
   }

@@ -37,4 +37,9 @@ selectMenuItem(menuItem: string) {
     this.activeMenuItem = 'create-request';
     this.menuItemSelected.emit('create-request');
   }
+
+    onSubmitRequest() {
+    this.activeMenuItem = 'submit-request';
+    this.menuItemSelected.emit('submit-request');
+  }
 }

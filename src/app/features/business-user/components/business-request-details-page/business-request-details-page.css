@@ -43,12 +43,12 @@
 }
 
 .breadcrumb-icon {
- color: #ccc;
+  color: #ccc;
   font-weight: bold;
 }
 
 .breadcrumb-active {
-   color: #1e7a60 !important;
+  color: #1e7a60 !important;
   font-weight: 500;
 }
 
@@ -59,7 +59,53 @@
 }
 
 .title-section {
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-section .section {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.title-section .section svg {
+  width: 12px;
+  height: 12px;
+}
+
+.section {
   margin-bottom: 24px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2a2a2a80;
+  display: block;
+  letter-spacing: 0.5px;
+  margin-right: 8px;
+  margin-left: 3px;
+}
+
+.section-content {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.dashboard-link {
+  font-size: 13px;
+  color: #17a2b8;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.dashboard-link:hover {
+  text-decoration: underline;
 }
 
 .modal-title {
@@ -73,6 +119,46 @@
   font-size: 15px !important;
   color: #1e7a60;
   margin: 0;
+}
+
+.grade {
+  width: 96px;
+  height: 96px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.grade-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #6b4e4e;
+  line-height: 1;
+}
+
+.grade-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #8b6f6f;
+  margin-top: 4px;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  gap: 400px;
+  align-items: center;
+}
+
+.subrow {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .info-row {
@@ -133,50 +219,131 @@
   background-color: #00000033;
   margin: 20px 0;
 }
-
-.section {
-  margin-bottom: 24px;
+/* QC Grading Section */
+.qc-grading {
+  margin-top: 20px;
 }
 
-.section-label {
-  font-size: 11px;
+.qc-grading-title {
+  font-size: 14px;
   font-weight: 600;
-  color: #666;
+  color: #2a2a2a80;
+}
+
+.qc-grading {
+  background: white;
+  padding: 0;
+  margin: 24px 0;
+}
+
+.qc-grading-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  padding: 0;
+}
+
+.qc-criterion-card {
+  border: 1px solid #00000033;
+  padding: 20px 24px;
+  margin: 10px;
+  border-radius: 15px;
+  transition: background-color 0.15s ease;
+}
+
+.qc-criterion-card:hover {
+  background-color: #f9fafb;
+}
+
+.criterion-header {
+  display: grid;
+  grid-template-columns: 1fr 1px 110px;
+  align-items: center;
+  gap: 16px;
+}
+
+.criterion-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  flex: 1;
+}
+
+.check-circle {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.criterion-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.criterion-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.4;
+}
+
+.criterion-description {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.vertical-divider {
+  width: 1px;
+  height: 100%;
+  background-color: #e5e7eb;
+}
+
+.evaluation-box {
+  width: 110px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.evaluation-label {
+  font-size: 10px;
+  color: #9ca3af;
   text-transform: uppercase;
-  display: block;
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
-.section-content {
-  font-size: 13px;
-  color: #666;
-  line-height: 1.6;
-  margin: 0;
+.evaluation-score {
+  font-size: 15px;
+  color: #00000080;
+  font-weight: 700;
+  white-space: nowrap;
 }
-
-.dashboard-link {
-  font-size: 13px;
-  color: #17a2b8;
-  text-decoration: none;
-  word-break: break-all;
-}
-
-.dashboard-link:hover {
-  text-decoration: underline;
-}
-
 /* Feedback Content */
 .feedback-content {
-  background-color: #FFF5DF;
+  background-color: #fff5df;
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 20px;
   /* border-left: 3px solid #FFCC00; */
 }
 
 .feedback-content label {
-color: #000;
-font-weight: 600;
+  color: #2a2a2acf;
+  font-weight: 600;
+  font-size: 13px;
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+
+.section-reviewer {
+  font-size: 12px;
+  color: #00000080;
+  font-weight: 600;
 }
 
 /* Reviewer Info Section */
@@ -191,8 +358,8 @@ font-weight: 600;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #E8F5F3;
-  color: #1E7A60;
+  background-color: #e8f5f3;
+  color: #1e7a60;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,0 +1,228 @@
+<div class="submit-request-page">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-left">
+      <h1 class="page-title">Submit Request</h1>
+      <div class="breadcrumb">
+        <span class="breadcrumb-item">Overview</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="last-refresh">Last Refresh: {{ currentTime }}</span>
+    </div>
+  </div>
+
+  <div class="create-request-container">
+    <img src="/imgs/submit-request.png" alt="Request Submission" class="submit-success-image" />
+    <div class="create-request-overlay">
+      <div class="create-request-content">
+        <div class="create-request-text">
+          <h2 class="create-request-title">Need to<br /><strong>submit a request?</strong></h2>
+          <p class="create-request-description">
+            Select a dashboard from the list below to initiate a QC review request.
+          </p>
+        </div>
+        <div class="custom-dropdown" (clickOutside)="isOpen = false">
+          <div class="dropdown-trigger" (click)="isOpen = !isOpen">
+            <span>{{ selectedOption?.label || 'Select a Dashboard' }}</span>
+            <svg class="select-arrow" width="12" height="8" viewBox="0 0 12 8">
+              <path
+                d="M1 1.5L6 6.5L11 1.5"
+                stroke="#666"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <div class="dropdown-panel" *ngIf="isOpen">
+            <input
+              type="text"
+              class="dropdown-search"
+              placeholder="Search dashboards..."
+              [(ngModel)]="searchTerm"
+            />
+
+            <div class="dropdown-options">
+              <div
+                class="dropdown-option"
+                *ngFor="let option of filteredOptions"
+                (click)="selectOption(option)"
+              >
+                <strong>{{ option.label }}</strong>
+                <span class="option-subtitle">{{ option.subtitle }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Validation Spinner -->
+  <div class="validation-container" *ngIf="isValidating">
+    <div class="spinner-wrapper">
+      <svg class="spinner" viewBox="0 0 50 50">
+        <circle class="spinner-track" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+        <circle class="spinner-circle" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+      </svg>
+    </div>
+    <p class="validation-text">Checking Validation....</p>
+  </div>
+
+  <!-- Dashboard Card -->
+  <div class="dashboard-card-container" *ngIf="showDashboard">
+    <div class="dashboard-card">
+      <h2 class="dashboard-card-title">{{ dashboardData.title }}</h2>
+
+      <div class="dashboard-section">
+        <h3 class="section-title">Overview</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Department</label>
+            <span>{{ dashboardData.department }}</span>
+          </div>
+          <div class="info-item">
+            <label>Submitted by</label>
+            <span>{{ dashboardData.submittedBy }}</span>
+          </div>
+          <div class="info-item">
+            <label>Theme</label>
+            <span>{{ dashboardData.theme }}</span>
+          </div>
+          <div class="info-item">
+            <label>Ranking Charts</label>
+            <span>{{ dashboardData.rankingCharts }}</span>
+          </div>
+          <div class="info-item">
+            <label>Current QA Score</label>
+            <span class="qa-score">{{ dashboardData.currentQAScore }}</span>
+          </div>
+          <div class="info-item">
+            <label>Latest Refresh</label>
+            <span>{{ dashboardData.latestRefresh }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h3 class="section-title">Configurations</h3>
+        <div class="config-badges">
+          <span class="badge badge-success">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7.5 15C8.48491 15 9.46018 14.806 10.3701 14.4291C11.2801 14.0522 12.1069 13.4997 12.8033 12.8033C13.4997 12.1069 14.0522 11.2801 14.4291 10.3701C14.806 9.46018 15 8.48491 15 7.5C15 6.51509 14.806 5.53982 14.4291 4.62987C14.0522 3.71993 13.4997 2.89314 12.8033 2.1967C12.1069 1.50026 11.2801 0.947814 10.3701 0.570903C9.46018 0.193993 8.48491 -1.46764e-08 7.5 0C5.51088 2.96403e-08 3.60322 0.790176 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5C0 9.48912 0.790176 11.3968 2.1967 12.8033C3.60322 14.2098 5.51088 15 7.5 15ZM7.30667 10.5333L11.4733 5.53333L10.1933 4.46667L6.61 8.76583L4.75583 6.91083L3.5775 8.08917L6.0775 10.5892L6.7225 11.2342L7.30667 10.5333Z"
+                fill="#34C759"
+              />
+            </svg>
+
+            Titled Center
+          </span>
+          <span class="badge badge-success">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7.5 15C8.48491 15 9.46018 14.806 10.3701 14.4291C11.2801 14.0522 12.1069 13.4997 12.8033 12.8033C13.4997 12.1069 14.0522 11.2801 14.4291 10.3701C14.806 9.46018 15 8.48491 15 7.5C15 6.51509 14.806 5.53982 14.4291 4.62987C14.0522 3.71993 13.4997 2.89314 12.8033 2.1967C12.1069 1.50026 11.2801 0.947814 10.3701 0.570903C9.46018 0.193993 8.48491 -1.46764e-08 7.5 0C5.51088 2.96403e-08 3.60322 0.790176 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5C0 9.48912 0.790176 11.3968 2.1967 12.8033C3.60322 14.2098 5.51088 15 7.5 15ZM7.30667 10.5333L11.4733 5.53333L10.1933 4.46667L6.61 8.76583L4.75583 6.91083L3.5775 8.08917L6.0775 10.5892L6.7225 11.2342L7.30667 10.5333Z"
+                fill="#34C759"
+              />
+            </svg>
+
+            Titled Center
+          </span>
+          <span class="badge badge-success">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7.5 15C8.48491 15 9.46018 14.806 10.3701 14.4291C11.2801 14.0522 12.1069 13.4997 12.8033 12.8033C13.4997 12.1069 14.0522 11.2801 14.4291 10.3701C14.806 9.46018 15 8.48491 15 7.5C15 6.51509 14.806 5.53982 14.4291 4.62987C14.0522 3.71993 13.4997 2.89314 12.8033 2.1967C12.1069 1.50026 11.2801 0.947814 10.3701 0.570903C9.46018 0.193993 8.48491 -1.46764e-08 7.5 0C5.51088 2.96403e-08 3.60322 0.790176 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5C0 9.48912 0.790176 11.3968 2.1967 12.8033C3.60322 14.2098 5.51088 15 7.5 15ZM7.30667 10.5333L11.4733 5.53333L10.1933 4.46667L6.61 8.76583L4.75583 6.91083L3.5775 8.08917L6.0775 10.5892L6.7225 11.2342L7.30667 10.5333Z"
+                fill="#34C759"
+              />
+            </svg>
+
+            Chart Interactions
+          </span>
+          <span class="badge badge-success">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M7.5 15C8.48491 15 9.46018 14.806 10.3701 14.4291C11.2801 14.0522 12.1069 13.4997 12.8033 12.8033C13.4997 12.1069 14.0522 11.2801 14.4291 10.3701C14.806 9.46018 15 8.48491 15 7.5C15 6.51509 14.806 5.53982 14.4291 4.62987C14.0522 3.71993 13.4997 2.89314 12.8033 2.1967C12.1069 1.50026 11.2801 0.947814 10.3701 0.570903C9.46018 0.193993 8.48491 -1.46764e-08 7.5 0C5.51088 2.96403e-08 3.60322 0.790176 2.1967 2.1967C0.790176 3.60322 0 5.51088 0 7.5C0 9.48912 0.790176 11.3968 2.1967 12.8033C3.60322 14.2098 5.51088 15 7.5 15ZM7.30667 10.5333L11.4733 5.53333L10.1933 4.46667L6.61 8.76583L4.75583 6.91083L3.5775 8.08917L6.0775 10.5892L6.7225 11.2342L7.30667 10.5333Z"
+                fill="#34C759"
+              />
+            </svg>
+
+            Years Filter
+          </span>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button class="btn btn-secondary" (click)="cancelSelection()">Cancel Selection</button>
+        <button class="btn btn-primary" (click)="submitToQC()">Submit to QC</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ready to Submit Message (shown when no selection) -->
+<div
+  class="ready-to-submit"
+  *ngIf="!isValidating && !showDashboard && !selectedOption"
+>
+  <div class="ready-visual">
+    <svg
+      width="180"
+      height="180"
+      viewBox="0 0 223 223"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g opacity="0.15">
+        <path
+          d="M185.833 120.793C185.833 167.251 153.313 190.48 114.659 203.953C112.635 204.639 110.437 204.606 108.434 203.86C69.6876 190.48 37.1667 167.251 37.1667 120.793V55.7509C37.1667 53.2866 38.1457 50.9232 39.8882 49.1807C41.6307 47.4382 43.9941 46.4593 46.4584 46.4593C65.0417 46.4593 88.2709 35.3093 104.438 21.1859C106.407 19.5041 108.911 18.5801 111.5 18.5801C114.089 18.5801 116.593 19.5041 118.562 21.1859C134.822 35.4022 157.958 46.4593 176.542 46.4593C179.006 46.4593 181.369 47.4382 183.112 49.1807C184.854 50.9232 185.833 53.2866 185.833 55.7509V120.793Z"
+          stroke="#1E7A60"
+          stroke-width="22"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+    </svg>
+
+    <div class="ready-overlay">
+      <h3 class="ready-title">Ready to Submit</h3>
+      <p class="ready-description">
+        Please select a Sector from the menu above to open the specific quality control submission
+        form for your department
+      </p>
+    </div>
+  </div>
+</div>
+
+</div>

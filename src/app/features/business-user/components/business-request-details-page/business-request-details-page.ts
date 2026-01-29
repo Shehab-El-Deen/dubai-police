@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TableRequest } from '../business-request-table/business-request-table';
 import { Subject } from 'rxjs';
-import { BusinessApproveModal } from '../business-approve-modal/business-approve-modal';
-import { BusinessRejectModal } from '../business-reject-modal/business-reject-modal';
 
 @Component({
   selector: 'app-business-request-details-page',
   standalone: true,
-  imports: [CommonModule, FormsModule, BusinessApproveModal, BusinessRejectModal],
+  imports: [CommonModule, FormsModule],
   templateUrl: './business-request-details-page.html',
   styleUrl: './business-request-details-page.css',
 })

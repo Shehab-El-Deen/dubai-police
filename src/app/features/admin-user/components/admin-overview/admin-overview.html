@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <app-admin-review-sidebar
+    (menuItemSelected)="onMenuItemSelected($event)"
+  ></app-admin-review-sidebar>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Overview Content (Teams List) -->
+    @if (currentView === 'overview') {
+      <app-admin-teams
+        [teams]="teams"
+        (addTeamClick)="onAddTeam()"
+        (statusChanged)="onTeamStatusChanged($event)"
+        (teamDeleted)="onTeamDeleted($event)"
+      ></app-admin-teams>
+    }
+
+    <!-- Add Team Content -->
+    @if (currentView === 'add-team') {
+      <app-admin-add-team
+        (closeForm)="onCloseAddTeam()"
+        (teamAdded)="onTeamAdded($event)"
+      ></app-admin-add-team>
+    }
+
+    <!-- Users Content -->
+    @if (currentView === 'users') {
+      <div class="users-section">
+        <h2>User Management</h2>
+        <p>Manage system users and their roles</p>
+      </div>
+    }
+
+    <!-- Settings Content -->
+    @if (currentView === 'settings') {
+      <div class="settings-section">
+        <h2>System Settings</h2>
+        <p>Configure system-wide settings and preferences</p>
+      </div>
+    }
+  </div>
+</div>
