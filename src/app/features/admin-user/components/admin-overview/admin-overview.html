@@ -17,12 +17,13 @@
     }
 
     <!-- Add Team Content -->
-    @if (currentView === 'add-team') {
-      <app-admin-add-team
-        (closeForm)="onCloseAddTeam()"
-        (teamAdded)="onTeamAdded($event)"
-      ></app-admin-add-team>
-    }
+   @if (currentView === 'add-team') {
+  <app-admin-add-team
+    (closeForm)="onCloseAddTeam()"
+    (teamAdded)="onTeamAdded($event)"
+    (formDirtyChange)="onFormDirtyChange($event)"
+  ></app-admin-add-team>
+}
 
     <!-- Users Content -->
     @if (currentView === 'users') {

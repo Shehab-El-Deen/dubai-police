@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BusinessReviewSidebar } from '../business-review-sidebar/business-review-sidebar';
@@ -12,13 +12,14 @@ import { BusinessRequestsPage } from "../business-requests-page/business-request
 import { BusinessRequestDetailModal } from '../business-request-detail-modal/business-request-detail-modal';
 import { CreateRequest } from "../create-request/create-request";
 import { BusinessSubmitRequest } from '../business-submit-request/business-submit-request';
+import { CanComponentDeactivate } from '../../../../core/guards/can-deactivate.guard';
 @Component({
   selector: 'app-business-overview',
   imports: [CommonModule, FormsModule, BusinessReviewSidebar, BusinessRequestTable, BusinessTabNavigation, BusinessRequestDetailsPage, BusinessRequestsPage, BusinessRequestDetailModal, CreateRequest, BusinessSubmitRequest],
   templateUrl: './business-overview.html',
   styleUrl: './business-overview.css',
 })
-export class BusinessOverview implements OnInit {
+export class BusinessOverview implements OnInit, CanComponentDeactivate {
   currentView: string = 'overview';
   searchQuery = '';
   selectedTab = 'all-requests';
@@ -30,6 +31,9 @@ export class BusinessOverview implements OnInit {
   pageSize = 10;
   totalPages = 1;
   selectedRequest: TableRequest | null = null;
+  private submitRequestHasChanges = false;
+private submitRequestFormSubmitted = false;
+
   @Output() viewCreatePage = new EventEmitter<void>();
   @Output() viewSubmitPage = new EventEmitter<void>();
   
@@ -109,9 +113,20 @@ export class BusinessOverview implements OnInit {
     },
   ];
 
-  onMenuItemSelected(menuItem: string) {
-    this.currentView = menuItem;
+onMenuItemSelected(menuItem: string) {
+  if (this.currentView === 'submit-request' && this.submitRequestHasChanges && !this.submitRequestFormSubmitted) {
+    const confirmed = confirm('You have unsaved changes. Do you really want to leave?');
+    if (!confirmed) {
+      return;
+    }
   }
+
+  if (this.currentView === 'submit-request') {
+    this.submitRequestFormSubmitted = true;
+  }
+  
+  this.currentView = menuItem;
+}
 
   ngOnInit() {
     this.filterAndPaginate();
@@ -185,9 +200,28 @@ export class BusinessOverview implements OnInit {
     this.currentView = 'overview';
   }
 
-   closeSubmitPage() {
-    this.currentView = 'overview';
+  closeSubmitPage() {
+  this.submitRequestFormSubmitted = true; 
+  this.currentView = 'overview';
+}
+
+onSubmitRequestChanges(hasChanges: boolean) {
+  this.submitRequestHasChanges = hasChanges;
+}
+
+canDeactivate(): boolean {
+  if (this.currentView === 'submit-request' && this.submitRequestHasChanges && !this.submitRequestFormSubmitted) {
+    return confirm('You have unsaved changes. Do you really want to leave?');
   }
+  return true;
+}
+
+@HostListener('window:beforeunload', ['$event'])
+unloadNotification($event: any): void {
+  if (!this.canDeactivate()) {
+    $event.returnValue = true;
+  }
+}
 
   nextPage() {
     if (this.currentPage < this.totalPages) {

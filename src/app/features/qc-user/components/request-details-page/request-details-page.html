@@ -5,12 +5,12 @@
       <h1 class="dashboard-title">Request Details</h1>
       <span class="last-refresh">Last Refresh: Today, 09:45 AM</span>
     </div>
-    <div class="breadcrumb">
+    <!-- <div class="breadcrumb">
       <span>Dashboard</span>
       <span class="breadcrumb-icon">›</span>
 
       <span class="breadcrumb-active">Home</span>
-    </div>
+    </div> -->
   </div>
   <div class="details-container">
     <!-- Title Section -->
@@ -116,7 +116,14 @@
               <p class="grading-description">Visual Design adheres to the guidelines</p>
             </div>
             <div class="score-input-wrapper">
-              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <input
+                type="number"
+                class="score-input"
+                min="0"
+                max="10"
+                [value]="scores.dataCustomization"
+                (input)="validateScore($event, 'dataCustomization')"
+              />
               <span class="score-max">/ 10</span>
             </div>
           </div>
@@ -127,7 +134,15 @@
               <p class="grading-description">Visual Design adheres to the guidelines</p>
             </div>
             <div class="score-input-wrapper">
-              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <input
+                type="number"
+                class="score-input"
+                min="0"
+                max="10"
+                [value]="scores.visualRepresentation1"
+                (input)="validateScore($event, 'visualRepresentation1')"
+              />
+
               <span class="score-max">/ 10</span>
             </div>
           </div>
@@ -138,7 +153,15 @@
               <p class="grading-description">Visual Design adheres to the guidelines</p>
             </div>
             <div class="score-input-wrapper">
-              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <input
+                type="number"
+                class="score-input"
+                min="0"
+                max="10"
+                [value]="scores.dataLabeling"
+                (input)="validateScore($event, 'dataLabeling')"
+              />
+
               <span class="score-max">/ 10</span>
             </div>
           </div>
@@ -149,7 +172,15 @@
               <p class="grading-description">Visual Design adheres to the guidelines</p>
             </div>
             <div class="score-input-wrapper">
-              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <input
+                type="number"
+                class="score-input"
+                min="0"
+                max="10"
+                [value]="scores.visualRepresentation2"
+                (input)="validateScore($event, 'visualRepresentation2')"
+              />
+
               <span class="score-max">/ 10</span>
             </div>
           </div>
@@ -160,7 +191,15 @@
               <p class="grading-description">Visual Design adheres to the guidelines</p>
             </div>
             <div class="score-input-wrapper">
-              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <input
+                type="number"
+                class="score-input"
+                min="0"
+                max="10"
+                [value]="scores.brandGuidelines"
+                (input)="validateScore($event, 'brandGuidelines')"
+              />
+
               <span class="score-max">/ 10</span>
             </div>
           </div>
@@ -171,7 +210,14 @@
               <p class="grading-description">Visual Design adheres to the guidelines</p>
             </div>
             <div class="score-input-wrapper">
-              <input type="number" class="score-input" min="0" max="10" value="0" />
+              <input
+                type="number"
+                class="score-input"
+                min="0"
+                max="10"
+                [value]="scores.avoidTables"
+                (input)="validateScore($event, 'avoidTables')"
+              />
               <span class="score-max">/ 10</span>
             </div>
           </div>
@@ -190,7 +236,7 @@
       <div class="rejection-section">
         <label class="section-label">Rejection Reason</label>
         <div class="custom-select">
-          <select class="rejection-select">
+          <select class="rejection-select" (change)="onRejectionReasonChange()">
             <option value="">Traffic Accident Hotspots: Dashboard</option>
             <option value="quality">Quality Issues</option>
             <option value="incomplete">Incomplete Data</option>
@@ -223,6 +269,7 @@
             [(ngModel)]="comment"
             placeholder="Enter your comment..."
             class="comment-textarea"
+            (input)="onCommentChange()"
           ></textarea>
           <div class="comment-toolbar">
             <button class="toolbar-btn" title="Text formatting">

@@ -1,11 +1,19 @@
-import { Component, OnInit, OnDestroy, inject, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Input,
+  HostListener,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { TableRequest } from '../request-table/request-table';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { ApproveModal } from '../approve-modal/approve-modal';
 import { RejectModal } from '../reject-modal/reject-modal';
+import { CanComponentDeactivate } from '../../../../core/guards/can-deactivate.guard';
 
 @Component({
   selector: 'app-request-details-page',
@@ -14,11 +22,22 @@ import { RejectModal } from '../reject-modal/reject-modal';
   templateUrl: './request-details-page.html',
   styleUrl: './request-details-page.css',
 })
-export class RequestDetailsPage implements OnInit, OnDestroy {
+export class RequestDetailsPage implements OnInit, OnDestroy, CanComponentDeactivate {
   @Input() selectedRequest: TableRequest | null = null;
   @Input() onClose: (() => void) | null = null;
+  @Output() changesDetected = new EventEmitter<boolean>();
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any): void {
+    if (!this.canDeactivate()) {
+      $event.returnValue = true;
+    }
+  }
 
   private destroy$ = new Subject<void>();
+  private formSubmitted = false;
+  // gradingForm: FormGroup;
+
   comment = '';
   showApproveModal = false;
   showRejectModal = false;
@@ -30,12 +49,30 @@ export class RequestDetailsPage implements OnInit, OnDestroy {
     dataLabeling: 0,
     visualRepresentation2: 0,
     brandGuidelines: 0,
-    avoidTables: 0
+    avoidTables: 0,
   };
 
   ngOnInit() {
-    // Component initialized
+      this.checkForChanges();
   }
+
+ 
+  onScoreChange() {
+  this.checkForChanges();
+}
+
+onCommentChange() {
+  this.checkForChanges();
+}
+
+onRejectionReasonChange() {
+  this.checkForChanges();
+}
+
+private checkForChanges() {
+  const hasChanges = Object.values(this.scores).some(score => score > 0) || this.comment.trim().length > 0;
+  this.changesDetected.emit(hasChanges);
+}
 
   openApproveModal(): void {
     this.showApproveModal = true;
@@ -45,12 +82,25 @@ export class RequestDetailsPage implements OnInit, OnDestroy {
     this.showRejectModal = true;
   }
 
+  canDeactivate(): boolean {
+    if (this.formSubmitted) {
+      return true;
+    }
+    const hasChanges =
+      Object.values(this.scores).some((score) => score > 0) || this.comment.trim().length > 0;
+    if (hasChanges) {
+      return confirm('You have unsaved changes. Do you really want to leave?');
+    }
+    return true;
+  }
   handleApprove(): void {
+    this.formSubmitted = true;
     console.log('Request approved');
     this.showApproveModal = false;
   }
 
   handleReject(reason: string): void {
+    this.formSubmitted = true;
     console.log('Request rejected with reason:', reason);
     this.showRejectModal = false;
   }
@@ -98,6 +148,19 @@ export class RequestDetailsPage implements OnInit, OnDestroy {
         return '#999';
     }
   }
+  validateScore(event: any, scoreKey: keyof typeof this.scores) {
+  let value = parseInt(event.target.value) || 0;
+  if (value > 10) {
+    value = 10;
+    event.target.value = '10';
+  }
+  if (value < 0) {
+    value = 0;
+    event.target.value = '0';
+  }
+  this.scores[scoreKey] = value;
+  this.onScoreChange();
+}
 
   ngOnDestroy() {
     this.destroy$.next();

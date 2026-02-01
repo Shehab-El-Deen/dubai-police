@@ -12,6 +12,13 @@
   width: 100% !important;
 }
 
+
+@media (max-width: 1400px) {
+  .dashboard-container {
+    margin-top: 0px !important;
+  }
+}
+
 .main-content,
 app-admin-add-team {
   width: 100%;

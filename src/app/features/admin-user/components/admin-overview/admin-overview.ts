@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminReviewSidebar } from '../admin-review-sidebar/admin-review-sidebar';
 import { AdminTeams } from '../admin-teams/admin-teams';
 import { AdminAddTeam } from '../admin-add-team/admin-add-team';
+import { CanComponentDeactivate } from '../../../../core/guards/can-deactivate.guard';
+
 
 export interface Team {
   id: string;
@@ -19,8 +21,14 @@ export interface Team {
   templateUrl: './admin-overview.html',
   styleUrl: './admin-overview.css',
 })
-export class AdminOverview implements OnInit {
+export class AdminOverview implements CanComponentDeactivate, OnInit {
+
+
+
+  
   currentView: string = 'overview';
+  private addTeamFormDirty = false;
+  private addTeamFormSubmitted = false;
   teams: Team[] = [
     {
       id: '#1234',
@@ -76,19 +84,37 @@ export class AdminOverview implements OnInit {
     // Initialize admin dashboard
   }
 
-  onMenuItemSelected(menuItem: string) {
-    this.currentView = menuItem;
+onMenuItemSelected(menuItem: string) {
+  // Check if we can leave the current view
+  if (this.currentView === 'add-team' && this.addTeamFormDirty && !this.addTeamFormSubmitted) {
+    const confirmed = confirm('You have unsaved changes. Do you really want to leave?');
+    if (!confirmed) {
+      return; // Don't change view
+    }
   }
+  
+  // Reset the form state when leaving add-team
+  if (this.currentView === 'add-team') {
+    this.addTeamFormSubmitted = true;
+  }
+  
+  this.currentView = menuItem;
+}
 
-  onAddTeam() {
+ onAddTeam() {
     this.currentView = 'add-team';
+    this.addTeamFormDirty = false;
+    this.addTeamFormSubmitted = false;
   }
 
   onCloseAddTeam() {
+    this.addTeamFormSubmitted = true;
     this.currentView = 'overview';
   }
 
+
   onTeamAdded(newTeam: any) {
+    this.addTeamFormSubmitted = true;
     const team: Team = {
       id: '#' + (Math.max(...this.teams.map(t => parseInt(t.id.substring(1)))) + 1),
       name: newTeam.teamName,
@@ -111,4 +137,23 @@ export class AdminOverview implements OnInit {
       this.teams.splice(index, 1);
     }
   }
+
+  onFormDirtyChange(isDirty: boolean) {
+    this.addTeamFormDirty = isDirty;
+  }
+
+  canDeactivate(): boolean {
+    // If we're on the add-team view and form is dirty and not submitted
+    if (this.currentView === 'add-team' && this.addTeamFormDirty && !this.addTeamFormSubmitted) {
+      return confirm('You have unsaved changes. Do you really want to leave?');
+    }
+    return true;
+  }
+@HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any): void {
+    if (!this.canDeactivate()) {
+      $event.returnValue = true;
+    }
+  }
+
 }

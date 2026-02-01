@@ -11,9 +11,9 @@
           <h1 class="dashboard-title">Quality Review Dashboard</h1>
           <span class="last-refresh">Last Refresh: Today, {{ lastRefresh | date: 'short' }}</span>
         </div>
-        <div class="breadcrumb">
+        <!-- <div class="breadcrumb">
           <span class="breadcrumb-active">Overview</span>
-        </div>
+        </div> -->
       </div>
 
       <div class="create-request-container">
@@ -155,7 +155,10 @@
     <app-create-request [onClose]="closeCreatePage"></app-create-request>
   }
 
-   @if (currentView === 'submit-request') {
-    <app-business-submit-request [onClose]="closeSubmitPage"></app-business-submit-request>
-  }
+  @if (currentView === 'submit-request') {
+  <app-business-submit-request 
+    [onClose]="closeSubmitPage"
+    (changesDetected)="onSubmitRequestChanges($event)"
+  ></app-business-submit-request>
+}
 </div>

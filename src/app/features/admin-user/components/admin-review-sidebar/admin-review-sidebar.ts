@@ -11,15 +11,18 @@ import { AuthService } from '../../../../core/services/auth.service';
 })
 export class AdminReviewSidebar {
   @Output() menuItemSelected = new EventEmitter<string>();
-  
-  constructor(private router: Router, private authService: AuthService) {}
-  
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {}
+
   activeMenuItem = 'overview';
 
-  selectMenuItem(menuItem: string) {
-    this.activeMenuItem = menuItem;
-    this.menuItemSelected.emit(menuItem);
-  }
+selectMenuItem(menuItem: string) {
+  this.activeMenuItem = menuItem;
+  this.menuItemSelected.emit(menuItem);
+}
 
   logout() {
     this.authService.logout();

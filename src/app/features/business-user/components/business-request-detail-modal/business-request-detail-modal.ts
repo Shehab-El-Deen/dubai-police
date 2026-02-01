@@ -7,13 +7,15 @@ import {
 } from '../../../../core/services/request-detail.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { BusinessApproveModal } from '../business-approve-modal/business-approve-modal';
-import { BusinessRejectModal } from '../business-reject-modal/business-reject-modal';
+// import { BusinessApproveModal } from '../business-approve-modal/business-approve-modal';
+// import { BusinessRejectModal } from '../business-reject-modal/business-reject-modal';
 
 @Component({
   selector: 'app-business-request-detail-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule, BusinessApproveModal, BusinessRejectModal],
+  imports: [CommonModule, FormsModule, 
+    // BusinessApproveModal, BusinessRejectModal
+  ],
   templateUrl: './business-request-detail-modal.html',
   styleUrl: './business-request-detail-modal.css',
 })

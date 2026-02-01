@@ -1,11 +1,12 @@
 .sidebar {
-  width: 120%;
+  width: 100%;
   height: 100%;
   background-color: #ffffff;
   border-left: 1px solid #dee2e6;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  margin-right: 0px !important;
 }
 
 .sidebar-section {

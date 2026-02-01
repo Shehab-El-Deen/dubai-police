@@ -10,11 +10,11 @@
           <h1 class="dashboard-title">Home Dashboard</h1>
           <span class="last-refresh">Last Refresh: Today, {{ lastRefresh | date: 'short' }}</span>
         </div>
-        <div class="breadcrumb">
+        <!-- <div class="breadcrumb">
           <span>Dashboard</span>
           <span class="breadcrumb-icon">›</span>
           <span class="breadcrumb-active">Overview</span>
-        </div>
+        </div> -->
       </div>
 
       <!-- Stats Cards -->
@@ -115,6 +115,7 @@
     <app-request-details-page
       [selectedRequest]="selectedRequest"
       [onClose]="closeDetailsPage"
+      (changesDetected)="onDetailsPageChanges($event)"
     ></app-request-details-page>
   }
 </div>
