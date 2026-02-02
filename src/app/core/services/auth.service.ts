@@ -14,6 +14,31 @@ export class AuthService {
   private currentUserSubject = new BehaviorSubject<User | null>(
     this.getUserFromStorage()
   );
+
+  private hasNavigatedAfterLogin = false;
+
+/**
+ * Mark that user has navigated after login
+ */
+setNavigatedAfterLogin(): void {
+  this.hasNavigatedAfterLogin = true;
+  localStorage.setItem('hasNavigatedAfterLogin', 'true');
+}
+
+/**
+ * Check if user has navigated after login
+ */
+hasNavigated(): boolean {
+  return this.hasNavigatedAfterLogin || localStorage.getItem('hasNavigatedAfterLogin') === 'true';
+}
+
+/**
+ * Reset navigation flag
+ */
+private resetNavigationFlag(): void {
+  this.hasNavigatedAfterLogin = false;
+  localStorage.removeItem('hasNavigatedAfterLogin');
+}
   public currentUser$ = this.currentUserSubject.asObservable();
 
   constructor() {}
@@ -32,6 +57,7 @@ export class AuthService {
       
       // Store user in localStorage
       localStorage.setItem('currentUser', JSON.stringify(user));
+       this.setNavigatedAfterLogin();
       this.currentUserSubject.next(user);
       
       observer.next(user);
@@ -44,6 +70,7 @@ export class AuthService {
    */
   logout(): void {
     localStorage.removeItem('currentUser');
+      this.resetNavigationFlag();
     this.currentUserSubject.next(null);
   }
 

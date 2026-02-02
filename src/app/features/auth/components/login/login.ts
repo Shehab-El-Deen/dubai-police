@@ -33,36 +33,43 @@ export class Login {
     return this.loginForm.controls;
   }
 
-  onSubmit() {
-    this.submitted = true;
-    this.error = '';
+onSubmit() {
+  this.submitted = true;
+  this.error = '';
 
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    this.loading = true;
-    const { username, password } = this.loginForm.value;
-
-    this.authService.login(username, password).subscribe({
-      next: (user) => {
-        // Determine where to redirect based on role
-        const role = this.authService.getRoleForUsername(user.username);
-        if (role === 'business') {
-          this.router.navigate(['/business']);
-        } else if (role === 'qc') {
-          this.router.navigate(['/qc']);
-        } else if (role === 'admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/login']);
-        }
-      },
-      error: (error) => {
-        this.error = error?.message || 'Login failed';
-        this.loading = false;
-      }
-    });
+  if (this.loginForm.invalid) {
+    return;
   }
+
+  this.loading = true;
+  const { username, password } = this.loginForm.value;
+
+  this.authService.login(username, password).subscribe({
+    next: (user) => {
+      // Determine where to redirect based on role
+      const role = this.authService.getRoleForUsername(user.username);
+      
+      // Use replaceUrl to replace login page in history
+      if (role === 'business') {
+        this.router.navigate(['/business'], { replaceUrl: true });
+      } else if (role === 'qc') {
+        this.router.navigate(['/qc'], { replaceUrl: true });
+      } else if (role === 'admin') {
+        this.router.navigate(['/admin'], { replaceUrl: true });
+      } else {
+        this.router.navigate(['/login']);
+      }
+      
+      // Add an extra state to prevent going back
+      setTimeout(() => {
+        window.history.pushState(null, '', window.location.href);
+      }, 100);
+    },
+    error: (error) => {
+      this.error = error?.message || 'Login failed';
+      this.loading = false;
+    }
+  });
+}
 }
 

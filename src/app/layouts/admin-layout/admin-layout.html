@@ -1,5 +1,10 @@
-<app-header 
-  [centerText]="'Dashboard Quality & Migration Portal'" 
-  [showUserInfo]="true">
-</app-header>
-<router-outlet></router-outlet>
+<div class="admin-layout">
+  <app-header
+    [centerText]="'Dashboard Quality & Migration Portal'"
+    [showUserInfo]="true">
+  </app-header>
+
+  <div class="admin-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

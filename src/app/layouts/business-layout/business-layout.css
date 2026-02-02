@@ -1,0 +1,10 @@
+.business-layout {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.business-content {
+  padding-top: 70px;
+  min-height: calc(100vh - 70px);
+}

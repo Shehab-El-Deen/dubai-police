@@ -5,12 +5,13 @@ import { AuthLayout } from './layouts/auth-layout/auth-layout';
 import { BusinessLayout } from './layouts/business-layout/business-layout';
 import { QcLayout } from './layouts/qc-layout/qc-layout';
 import { AdminLayout } from './layouts/admin-layout/admin-layout';
-
+import { LoginGuard } from './core/guards/login.guard';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: AuthLayout,
+    canActivate: [LoginGuard],
     loadChildren: () =>
       import('./features/auth/auth.module').then(m => m.AuthModule)
   },

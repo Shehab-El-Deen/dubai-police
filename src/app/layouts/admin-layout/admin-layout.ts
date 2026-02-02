@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
+import { RouterOutlet,Router } from '@angular/router';
 import { Header } from '../../shared/components/header/header';
 
 @Component({
@@ -8,6 +9,15 @@ import { Header } from '../../shared/components/header/header';
   templateUrl: './admin-layout.html',
   styleUrl: './admin-layout.css',
 })
-export class AdminLayout {
+export class AdminLayout implements OnInit {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+  
+  ngOnInit() {
+    // Prevent back navigation to login
+    history.pushState(null, '', location.href);
+  }
 
 }

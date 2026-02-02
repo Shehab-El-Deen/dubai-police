@@ -1,0 +1,10 @@
+.qc-layout {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+.qc-content {
+  padding-top: 70px;
+  min-height: calc(100vh - 70px);
+}
