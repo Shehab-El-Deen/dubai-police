@@ -14,7 +14,7 @@ export class BusinessReviewSidebar {
   
  constructor( private router: Router,
   private authService: AuthService) {}
-  requestsExpanded = false;
+  requestsExpanded = true;
   activeMenuItem = 'overview';
 
   toggleRequests() {

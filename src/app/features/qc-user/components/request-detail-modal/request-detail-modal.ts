@@ -93,6 +93,23 @@ export class RequestDetailModal implements OnInit, OnDestroy {
     }
   }
 
+    getStatusBgColor(status: string): string {
+    switch (status) {
+      case 'Validation Failed':
+        return '#FFFBD1'
+      case 'Rejected':
+        return '#FFD6D6';
+      case 'Under Review':
+        return '#FFFBD1';
+      case 'Approved':
+        return '#E4FAEF';
+      case 'Need Review':
+        return '#D1ECFF';
+      default:
+        return '#e2e3e5';
+    }
+  }
+
   getPriorityColor(priority: string): string {
     switch (priority) {
       case 'High':

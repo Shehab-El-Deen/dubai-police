@@ -9,21 +9,7 @@
       [class.active]="activeMenuItem === 'overview'"
       (click)="selectMenuItem('overview')"
     >
-      <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M14 20V14C14 12.8954 13.1046 12 12 12C10.8954 12 10 12.8954 10 14V20M10.9833 3.60011L4.98335 7.14177C4.37395 7.50149 4 8.15646 4 8.8641V18C4 19.1046 4.89543 20 6 20H18C19.1046 20 20 19.1046 20 18V8.8641C20 8.15646 19.6261 7.50149 19.0167 7.14177L13.0167 3.60011C12.3894 3.22988 11.6106 3.22988 10.9833 3.60011Z"
-          stroke="#1E7A60"
-          stroke-width="1.4"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+             <img src="svgs/Home.svg" width="24" height="24" alt="Home" />
 
       <span class="menu-label">Overview</span>
     </div>
@@ -31,41 +17,12 @@
     <!-- Requests Menu Item (Collapsible) -->
     <div class="menu-item-collapsible">
       <div class="menu-item-header" (click)="toggleRequests()">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M14.186 2.75293V6.34893C14.186 6.83593 14.381 7.30393 14.726 7.64893C15.0729 7.9943 15.5425 8.18812 16.032 8.18793H20.157"
-            stroke="#888888"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M7.647 7.64703H10.912M7.647 12H16.353M7.647 16.353H16.353M20.25 8.56803V17.136C20.2301 17.6965 20.0996 18.2474 19.8658 18.7571C19.6321 19.2669 19.2997 19.7253 18.888 20.106C18.4759 20.4885 17.9925 20.786 17.4654 20.9817C16.9383 21.1773 16.3778 21.2671 15.816 21.246H8.226C7.66074 21.2719 7.09594 21.1859 6.56398 20.993C6.03201 20.8001 5.54335 20.5041 5.126 20.122C4.71027 19.7403 4.37454 19.2797 4.13833 18.7671C3.90211 18.2545 3.77011 17.7001 3.75 17.136V6.86203C3.76985 6.3016 3.90042 5.75065 4.13418 5.24091C4.36794 4.73118 4.70026 4.27274 5.112 3.89203C5.52408 3.50955 6.00748 3.21201 6.53458 3.01641C7.06169 2.8208 7.62217 2.73096 8.184 2.75203H13.898C14.7703 2.74895 15.6123 3.07169 16.259 3.65703L19.219 6.37903C19.5349 6.65111 19.7899 6.98663 19.9675 7.36378C20.1452 7.74092 20.2414 8.15123 20.25 8.56803Z"
-            stroke="#888888"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+                    <img src="svgs/Requests Icon.svg" width="24" height="24" alt="New Request" />
+
 
         <span class="menu-label">Requests</span>
-        <svg
-          class="menu-arrow"
-          [class.expanded]="requestsExpanded"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
+           <img class="menu-arrow" src="svgs/arrow-up-simple.svg" width="20" height="20"  class="menu-arrow"
+          [class.expanded]="requestsExpanded" />
       </div>
 
       <!-- Submenu Items -->
@@ -107,22 +64,8 @@
   <!-- Logout Section -->
   <div class="sidebar-section sidebar-footer">
     <div class="menu-item" (click)="logout()">
-      <svg
-        class="menu-icon"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5m0 0l-5-5m5 5H9"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+                 <img src="svgs/log-out.svg" width="24" height="24" alt="log-out" />
+
       <span class="menu-label">Logout</span>
     </div>
   </div>

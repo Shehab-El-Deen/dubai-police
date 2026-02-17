@@ -197,10 +197,20 @@
 }
 
 .status-badge {
-  background-color: #e3f2fd;
-  color: #1976d2;
+  display: inline-flex;
+  align-items: center;
   padding: 4px 8px;
-  border-radius: 10px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.status-dot {
+  width: 18px;
+  height: 18px;
+  /* margin-right: 6px; */
+  flex-shrink: 0;
+  mask-image: url('/svgs/Dot.svg');
+  -webkit-mask-image: url('/svgs/Dot.svg');
 }
 
 .priority-badge {

@@ -3,38 +3,10 @@
     <!-- Modal Header -->
     <div class="modal-header">
       <button class="close-btn" (click)="closeModal()">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12.8168 17.8255C12.8769 17.8923 12.9238 17.9708 12.955 18.0567C12.9862 18.1426 13.001 18.234 12.9985 18.3259C12.996 18.4177 12.9764 18.5082 12.9406 18.5921C12.9048 18.6759 12.8537 18.7516 12.7901 18.8147C12.7265 18.8778 12.6517 18.9272 12.57 18.9599C12.4883 18.9927 12.4012 19.0082 12.3137 19.0056C12.2263 19.003 12.1402 18.9823 12.0603 18.9448C11.9805 18.9072 11.9084 18.8535 11.8483 18.7867L6.18694 12.4904C6.07003 12.3605 6.00488 12.1885 6.00488 12.0098C6.00488 11.831 6.07003 11.6591 6.18694 11.5292L11.8483 5.23217C11.908 5.16392 11.98 5.1088 12.0602 5.07003C12.1403 5.03125 12.227 5.00959 12.3152 5.0063C12.4034 5.00301 12.4913 5.01816 12.5739 5.05086C12.6564 5.08356 12.732 5.13317 12.7961 5.1968C12.8603 5.26043 12.9118 5.33682 12.9476 5.42152C12.9834 5.50622 13.0028 5.59756 13.0047 5.69022C13.0066 5.78287 12.991 5.87501 12.9588 5.96127C12.9265 6.04753 12.8782 6.1262 12.8168 6.1927L7.58697 12.0098L12.8168 17.8255Z"
-            fill="black"
-          />
-          <path
-            d="M19.8168 17.8255C19.8769 17.8923 19.9238 17.9708 19.955 18.0567C19.9862 18.1426 20.001 18.234 19.9985 18.3259C19.996 18.4177 19.9764 18.5082 19.9406 18.5921C19.9048 18.6759 19.8537 18.7516 19.7901 18.8147C19.7265 18.8778 19.6517 18.9272 19.57 18.9599C19.4883 18.9927 19.4012 19.0082 19.3137 19.0056C19.2263 19.003 19.1402 18.9823 19.0603 18.9448C18.9805 18.9072 18.9084 18.8535 18.8483 18.7867L13.1869 12.4904C13.07 12.3605 13.0049 12.1885 13.0049 12.0098C13.0049 11.831 13.07 11.6591 13.1869 11.5292L18.8483 5.23217C18.908 5.16392 18.98 5.1088 19.0602 5.07003C19.1403 5.03125 19.227 5.00959 19.3152 5.0063C19.4034 5.00301 19.4913 5.01816 19.5739 5.05086C19.6564 5.08356 19.732 5.13317 19.7961 5.1968C19.8603 5.26043 19.9118 5.33682 19.9476 5.42152C19.9834 5.50622 20.0028 5.59756 20.0047 5.69022C20.0066 5.78287 19.991 5.87501 19.9588 5.96127C19.9265 6.04753 19.8782 6.1262 19.8168 6.1927L14.587 12.0098L19.8168 17.8255Z"
-            fill="black"
-          />
-        </svg>
+        <img src="svgs/back.svg" width="18" height="18" alt="back" />
       </button>
       <button class="expand-btn" (click)="onExpandClick()">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 21 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M18.5 7.5V2.5M18.5 2.5H13.5M18.5 2.5L12.5 8.429M7.5 18.5L2.5 18.523V13.5M8.5 12.5L2.5 18.5"
-            stroke="black"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <img src="svgs/expand.svg" width="18" height="18" alt="expand" />
       </button>
     </div>
 
@@ -53,23 +25,15 @@
         <div class="info-row">
           <div class="info-column">
             <label class="info-label">Status</label>
-            <span
+                  <span
               class="status-badge"
-              [style.background-color]="getStatusColor(selectedRequest.status) + '20'"
+              [style.background-color]="getStatusBgColor(selectedRequest.status)"
               [style.color]="getStatusColor(selectedRequest.status)"
             >
-              <svg
-                width="8"
-                height="8"
-                viewBox="0 0 8 8"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3.75 0C3.00832 0 2.2833 0.219934 1.66661 0.631989C1.04993 1.04404 0.569282 1.62971 0.285453 2.31494C0.00162482 3.00016 -0.0726377 3.75416 0.0720569 4.48159C0.216751 5.20902 0.573904 5.8772 1.09835 6.40165C1.6228 6.9261 2.29098 7.28325 3.01841 7.42795C3.74584 7.57264 4.49984 7.49838 5.18506 7.21455C5.87029 6.93072 6.45596 6.45007 6.86801 5.83339C7.28007 5.2167 7.5 4.49168 7.5 3.75C7.5 2.75544 7.10491 1.80161 6.40165 1.09835C5.69839 0.395088 4.74456 0 3.75 0ZM3.75 4.6875C3.56458 4.6875 3.38333 4.63252 3.22915 4.5295C3.07498 4.42649 2.95482 4.28007 2.88386 4.10877C2.81291 3.93746 2.79434 3.74896 2.83052 3.5671C2.86669 3.38525 2.95598 3.2182 3.08709 3.08709C3.2182 2.95598 3.38525 2.86669 3.5671 2.83051C3.74896 2.79434 3.93746 2.81291 4.10877 2.88386C4.28007 2.95482 4.42649 3.07498 4.5295 3.22915C4.63252 3.38332 4.6875 3.56458 4.6875 3.75C4.6875 3.99864 4.58873 4.2371 4.41291 4.41291C4.2371 4.58873 3.99864 4.6875 3.75 4.6875Z"
-                  [attr.fill]="getStatusColor(selectedRequest.status)"
-                />
-              </svg>
+              <span
+                class="svg-icon status-dot"
+                [style.background-color]="getStatusColor(selectedRequest.status)"
+              ></span>
               {{ selectedRequest.status }}
             </span>
           </div>
@@ -79,22 +43,10 @@
           <div class="info-column">
             <label class="info-label">Priority</label>
             <span class="priority-badge">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                [style.color]="getPriorityColor(selectedRequest.priority)"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M18 14C18.1704 13.9999 18.3379 13.9563 18.4867 13.8733C18.6355 13.7902 18.7606 13.6706 18.8502 13.5256C18.9398 13.3806 18.9908 13.2152 18.9985 13.045C19.0061 12.8748 18.9702 12.7054 18.894 12.553L17.118 9L18.894 5.447C18.9702 5.29458 19.0061 5.12522 18.9985 4.95501C18.9908 4.78479 18.9398 4.61935 18.8502 4.47439C18.7606 4.32944 18.6355 4.20977 18.4867 4.12674C18.3379 4.04372 18.1704 4.00009 18 4H7V3C7 2.73478 6.89464 2.48043 6.70711 2.29289C6.51957 2.10536 6.26522 2 6 2C5.73478 2 5.48043 2.10536 5.29289 2.29289C5.10536 2.48043 5 2.73478 5 3V21C5 21.2652 5.10536 21.5196 5.29289 21.7071C5.48043 21.8946 5.73478 22 6 22C6.26522 22 6.51957 21.8946 6.70711 21.7071C6.89464 21.5196 7 21.2652 7 21V14H18Z"
-                  [attr.fill]="getPriorityColor(selectedRequest.priority)"
-                />
-              </svg>
-              {{ selectedRequest.priority }}
+              <span
+                class="svg-icon priority-icon"
+                [style.background-color]="getPriorityColor(selectedRequest.priority)"
+              ></span>
             </span>
           </div>
         </div>
@@ -172,81 +124,23 @@
               placeholder="Enter your comment..."
               class="comment-textarea"
             ></textarea>
-            <div class="comment-toolbar">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6 4H18C19.1046 4 20 4.89543 20 6V16C20 17.1046 19.1046 18 18 18H7L4 21V6C4 4.89543 4.89543 4 6 4Z"
-                  stroke="#999"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 12H21M3 6H21M3 18H21"
-                  stroke="#999"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-              </svg>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5 12C5 12 8 7 12 7C16 7 19 12 12 17C8 17 5 12 5 12Z"
-                  stroke="#999"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M5 8C3.89543 8 3 8.89543 3 10V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16V10C21 8.89543 20.1046 8 19 8"
-                  stroke="#999"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 5V19M5 12H19"
-                  stroke="#999"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </div>
+             <div class="comment-toolbar">
+            <button class="toolbar-btn" title="Text formatting">
+              <img src="svgs/T-comment.svg" width="22" height="22" />
+            </button>
+            <button class="toolbar-btn" title="Bold">
+              <img src="svgs/doc-comment.svg" width="22" height="22" />
+            </button>
+            <button class="toolbar-btn" title="Emoji">
+              <img src="svgs/happy_light.svg" width="22" height="22" />
+            </button>
+            <button class="toolbar-btn" title="Link">
+              <img src="svgs/Img_load_box.svg" width="22" height="22" />
+            </button>
+            <button class="toolbar-btn" title="Attachment">
+              <img src="svgs/paper_clip_light.svg" width="22" height="22" />
+            </button>
+          </div>
           </div>
         </div>
 

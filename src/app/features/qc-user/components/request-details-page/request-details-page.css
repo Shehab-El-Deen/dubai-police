@@ -423,7 +423,7 @@
   position: absolute;
   right: 16px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(180deg);
   pointer-events: none;
 }
 
@@ -509,7 +509,7 @@
   min-width: 240px;
 }
 
-.btn-reject {
+.btn-reject{
   background: white;
   color: #dc3545;
   border: 1.5px solid #dc3545;
